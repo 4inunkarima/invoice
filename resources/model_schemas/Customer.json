@@ -15,7 +15,7 @@
         "name": "nama",
         "dbType": "string",
         "htmlType": "text",
-        "validations": "email string text",
+        "validations": "",
         "searchable": true,
         "fillable": true,
         "primary": false,

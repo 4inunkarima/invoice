@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use InfyOm\Generator\Utils\ResponseUtil;
 use Response;
-
+use Validator;
 /**
  * @SWG\Swagger(
  *   basePath="/api/v1",

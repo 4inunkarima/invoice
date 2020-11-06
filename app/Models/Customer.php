@@ -61,7 +61,7 @@ class Customer extends Model
      * @var array
      */
     public static $rules = [
-        'nama' => 'email string text'
+        
     ];
 
     

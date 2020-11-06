@@ -59,7 +59,6 @@ class CustomerController extends AppBaseController
         $customer = $this->customerRepository->create($input);
 
         Flash::success('Customer saved successfully.');
-
         return redirect(route('customers.index'));
     }
 
