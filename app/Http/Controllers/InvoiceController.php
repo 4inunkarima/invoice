@@ -118,14 +118,14 @@ class InvoiceController extends AppBaseController
         if (empty($invoice)) {
             Flash::error('Invoice not found');
 
-            return redirect(route('invoices.index'));
+            return redirect(route('invoices.dashboard'));
         }
 
         $invoice = $this->invoiceRepository->update($request->all(), $id);
 
         Flash::success('Invoice updated successfully.');
 
-        return redirect(route('invoices.index'));
+        return redirect(route('invoices.dashboard'));
     }
 
     /**
