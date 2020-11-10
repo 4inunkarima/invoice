@@ -31,9 +31,9 @@
                                     </div>
                                     <img src="..." class="ml-3" alt="...">
                                 </div>
-                                <div class="form-group mb-2">
+                                <div class="form-group col-mb-4">
                                     <label for="exampleFormControlTextarea1">Description</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control col-md-8" id="exampleFormControlTextarea1" rows="4"></textarea>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -63,33 +63,58 @@
                                     </div>
                                 </div>
                                 <hr />
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCity">From</label>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <label for="Address">From</label>
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Kantor LALALA">  
                                         <p>Jl. Petemon IV No.32-A, RT 014/RW 008<br/>Kel. Petemon, Kec. Sawahan, Kota Surabaya<br/>Jawa Timur, 60252<br/>0839-0868-2951</p>
+                                        <br/>
+                                        <label for="Address">To</label>
+                                        <input type="text" class="form-control" placeholder="Client">
+                                        </div>
+                                        <div class="col">
+                                        <label for="Address">Date</label>
+                                        <input type="text" class="form-control" placeholder="Add Payment Date..">
+                                        <br/>
+                                        <label for="Address">Invoice Due</label>
+                                        <select id="inputState" class="form-control">
+                                            <option selected>24 hours</option>
+                                            <option>1 day</option>
+                                        </select>
+                                        <br/>
+                                        <label for="Address">Purchase Order Number</label>
+                                        <input type="text" class="form-control" placeholder="Order Number">
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                    <label for="inputState">Language</label>
-                                    <input type="email" class="form-control" id="inputEmail4">
+                                </form>
+                                <hr />
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <label for="Address">Description</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Item Name & Description" rows="4"></textarea>
+                                        </div>
+                                        <div class="col-md-2">
+                                        <label for="Address">Quantity</label>
+                                        <input type="text" class="form-control" placeholder="Quantity">
+                                        </div>
+                                        <div class="col-md-2">
+                                        <label for="Address">Rate</label>
+                                        <input type="text" class="form-control" placeholder="0.00">
+                                        <br/>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Unit</option>
+                                                <option>10</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-2">
+                                        <label for="Address">Amount</label>
+                                        <input type="text" class="form-control" placeholder="USD   0.00">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4">
-                                    </div>
-                                    <hr />
-                                    <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword4">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Password</label>
-                                    <input type="password" class="form-control" id="inputPassword4">
-                                    </div>
-                                </div>
-                                    
+                                </form>
+                                                                    
                                 
                             </div>
                         </div>
