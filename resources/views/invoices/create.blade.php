@@ -19,11 +19,11 @@
                             </div>
                             <div class="card-body">
                                 <form class="form-inline">
-                                <div class="form-group mb-2">
-                                    <label for="staticEmail2" class="sr-only">Invoice</label>
-                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Invoice">
-                                </div>
-                                <button type="submit" class="btn btn-primary mb-2">Save Draft</button>
+                                    <div class="form-group mb-2">
+                                        <label for="staticEmail2" class="sr-only">Email</label>
+                                        <input type="text" readonly class="form-control-plaintext" font-size="6px" id="staticEmail2" value="office@email.com">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mb-2">Save Draft</button>
                                 </form>
                                 <div class="media">
                                     <div class="media-body">
@@ -114,8 +114,35 @@
                                         </div>
                                     </div>
                                 </form>
-                                                                    
-                                
+                                <hr /> 
+                                <div class="col-md-6 float-right">                                  
+                                    <label for="Address">Sub Total</label>
+                                    <hr size="2px" width="100%" />
+                                    <h4>Total USD</h4>
+                                    <div class="input-group border border-secondary">
+                                            <div class="input-group-prepend">
+                                            <div class="input-group-text">Balance</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="inlineFormInputGroup" value="USD">
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <hr />
+                                        <div class="col-md-12">
+                                        <label for="Address">Invoice Note</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add note.." rows="4"></textarea> 
+                                </div>
+                                <br/>
+                                <br/>
+                                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Send Invoice</a>
+                                <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Draft</a>
+                            
                             </div>
                         </div>
                     </div>
