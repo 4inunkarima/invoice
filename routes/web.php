@@ -31,3 +31,5 @@ Route::resource('invoices', 'InvoiceController');
 Route::resource('transaksis', 'TransaksiController');
 
 Route::resource('reports', 'ReportController');
+Route::get('/reports/pdf/{invoice}', 'ReportController@invoicePdf')->name('order.pdf');
+Route::get('/reports/excel/{invoice}', 'ReportController@invoiceExcel')->name('order.excel');
