@@ -138,7 +138,7 @@
                                             <input type="text" class="form-control" placeholder="Fax Number">
                                             <br/>
                                             <label for="Address">Note</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
                                         </div>
                                     </div>
                                 </form>
