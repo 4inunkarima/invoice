@@ -32,15 +32,15 @@
                                 <form>
                                     <div class="row">
                                         <div class="col-md-3">
-                                        <label for="Address">First Name</label>
-                                        <input type="text" class="form-control" placeholder="First Name">
+                                        <label for="Address">Nama</label>
+                                        <input type="text" class="form-control" placeholder="Nama">
                                         <br/>
                                         <label for="Address">Email</label>
                                         <input type="text" class="form-control" placeholder="Email">
                                         </div>
                                         <div class="col-md-3">
-                                        <label for="Address">Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last Name">
+                                        <label for="Address">Nama Organisasi</label>
+                                        <input type="text" class="form-control" placeholder="Nama Organisasi">
                                         <br/>
                                         <label for="Address">Username</label>
                                         <input type="text" class="form-control" placeholder="Username">
@@ -77,11 +77,11 @@
                                 <form>
                                     <div class="row">
                                         <div class="col-md-6">
-                                        <label for="Address">Address 1</label>
-                                        <input type="text" class="form-control" placeholder="Address">
+                                        <label for="Address">Alamat</label>
+                                        <input type="text" class="form-control" placeholder="Alamat">
                                         <br/>
-                                        <label for="Address">Address 1(Optional)</label>
-                                        <input type="text" class="form-control" placeholder="Address">
+                                        <label for="Address">Alamat Tambahan</label>
+                                        <input type="text" class="form-control" placeholder="Alamat">
                                         </div>
                                         <div class="col-md-3">
                                         <label for="Address">Postal Code</label>
@@ -123,7 +123,7 @@
                                 <form>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="Address">Phone Number</label>
+                                            <label for="Address">Telepon</label>
                                             <input type="text" class="form-control" placeholder="Phone Number">
                                             <br/>
                                             <label for="Address">Gender</label>
@@ -155,6 +155,8 @@
                                         </div>
                                     </div>
                                 </form>
+                                <br/>
+                                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Save Data</a>
                             </div>
                         </div>
                     </div>
