@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Invoice;
 use Illuminate\Http\Request;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -15,12 +15,18 @@ class DashboardController extends Controller
     // }
     public function index()
     {
-        $showCounts = Invoice::where('customer_id',$id)->count();
-        return view('dashboard.index',['showCounts'=>$showCounts,'id'=>$id]);
-        // $Invoice = invoice::selectRaw('COALESCE(sum(CASE WHEN status = 0 THEN subtotal END), 0) as pending, 
-        // COALESCE(count(CASE WHEN status = 3 THEN subtotal END), 0) as shipping,
-        // COALESCE(count(CASE WHEN status = 4 THEN subtotal END), 0) as completeOrder')
-        // ->where('customer_id', auth()->guard('customer')->user()->id)->get();
-        // return view('dashboard.index', compact('orders'));
+        $showCustomer = DB::table('customers')->count();
+        $showInvoice = DB::table('invoices')->count();
+        $showLunas = DB::table('invoices')->pluck('status');
+        foreach ($showLunas as $status){
+            echo $status;
+        }
+
+        return view('dashboard.index') 
+        ->with('showCustomer', $showCustomer)
+        ->with('showInvoice', $showInvoice)
+        ->with('showLunas', $showLunas);
+        
     }
+
 }
