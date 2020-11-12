@@ -3,7 +3,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>Tambah Barang</strong>
+                                <strong>Tambahkan / Edit</strong>
                             </div>
                             <div class="card-body">
                                 <form>
@@ -15,9 +15,20 @@
                                         <label for="Address">Jenis Produk</label>
                                         <input type="text" class="form-control" placeholder="Jenis Produk">
                                         </div>
+                                        <div class="col-md-1">
+                                        </div>
                                         <div class="col-md-4">
                                         <label for="Address">Stok</label>
-                                        <input type="text" class="form-control" placeholder="Stok">
+                                        <div class="input-group mb-3">
+                                           <input type="text" class="form-control" placeholder="Stok"> 
+                                            <div class="input-group-prepend">
+                                            <select id="inputState" class="input-group-text">
+                                                <option selected>Choose...</option>
+                                                <option>/Pcs</option>
+                                                <option>/Lusin</option>
+                                            </select>
+                                            </div>
+                                        </div>
                                         <br/>
                                         <label for="Address">Deskripsi Produk</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
@@ -28,7 +39,7 @@
                                 <form>
                                     <div class="row">
                                         <div class="col-md-6">
-                                        <label for="Address" >Jumlah Modal</label>
+                                        <label for="Address" >Harga Produk</label>
                                         <div class="input-group mb-2">
                                             <div class="input-group-prepend">
                                             <div class="input-group-text">IDR</div>
@@ -37,7 +48,7 @@
                                         </div>
                                         <br/>
                                         <label for="Address">Tanggal Masuk</label>
-                                        <input type="text" class="form-control" placeholder="DD/MM/YYYY">
+                                        <input type="date" class="form-control" name="Tanggal Masuk" required>  
                                         <br/>
                                         <label for="Address">Catatan Tambahan</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
