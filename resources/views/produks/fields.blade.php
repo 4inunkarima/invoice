@@ -1,29 +1,52 @@
-<!-- Nama Produk Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nama_produk', 'Nama Produk:') !!}
-    {!! Form::text('nama_produk', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Jenis Produk Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('jenis_produk', 'Jenis Produk:') !!}
-    {!! Form::text('jenis_produk', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Stok Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('stok', 'Stok:') !!}
-    {!! Form::number('stok', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Deskripsi Produk Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('deskripsi_produk', 'Deskripsi Produk:') !!}
-    {!! Form::text('deskripsi_produk', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('produks.index') }}" class="btn btn-secondary">Cancel</a>
-</div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fa fa-plus-square-o fa-lg"></i>
+                                <strong>Tambah Barang</strong>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <label for="Address">Nama Produk</label>
+                                        <input type="text" class="form-control" placeholder="Nama">
+                                        <br/>
+                                        <label for="Address">Jenis Produk</label>
+                                        <input type="text" class="form-control" placeholder="Jenis Produk">
+                                        </div>
+                                        <div class="col-md-4">
+                                        <label for="Address">Stok</label>
+                                        <input type="text" class="form-control" placeholder="Stok">
+                                        <br/>
+                                        <label for="Address">Deskripsi Produk</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr />
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <label for="Address" >Jumlah Modal</label>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                            <div class="input-group-text">IDR</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="" placeholder="Price">
+                                        </div>
+                                        <br/>
+                                        <label for="Address">Tanggal Masuk</label>
+                                        <input type="text" class="form-control" placeholder="DD/MM/YYYY">
+                                        <br/>
+                                        <label for="Address">Catatan Tambahan</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    </div>
+                                    </div>
+                                </form>
+                                <br/>
+                                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Save Change</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
