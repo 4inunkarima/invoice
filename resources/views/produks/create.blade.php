@@ -23,7 +23,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                         <label for="nama_produk">Nama Produk</label>
-                                        <input type="text" name="nama_produk" class="form-control" id="nama_produk" placeholder="Masukkan Nama">
+                                        <input type="text" name="nama_produk" class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk" placeholder="Masukkan Nama">
+                                        @error ('nama_produk') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                         <br/>
                                         <label for="jenis_produk">Jenis Produk</label>
                                         <input type="text" class="form-control" id="jenis_produk" name="jenis_produk" placeholder="Jenis Produk">
@@ -59,7 +60,7 @@
                                         </div>
                                         <br/>
                                         <label for="created_at">Tanggal Masuk</label>
-                                        <input type="date" class="form-control" id="created_at" name="created_at" required>  
+                                        <input type="date" class="form-control" id="created_at" name="created_at">  
                                         <br/>
                                         <label for="catatan">Catatan Tambahan</label>
                                         <textarea class="form-control" id="catatan" name="catatan" rows="4"></textarea>

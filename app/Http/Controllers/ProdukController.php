@@ -36,18 +36,15 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        $produk = new Produk;
-        $produk->nama_produk = $request->get('nama_produk');
-        $produk->jenis_produk = $request->get('jenis_produk');
-        $produk->stok = $request->get('stok');
-        $produk->harga_produk = $request->get('harga_produk');
-        $produk->deskripsi_produk = $request->get('deskripsi_produk');
-        $produk->catatan = $request->get('catatan');
-        $produk->created_at = $request->get('created_at');
-    
-        $produk->save();
+        $request->validate([
+            'nama'=>'required',
+            'jenis_produk'=>'required',
+            'stok'=>'required|numeric',
+            'harga_produk'=>'required|numeric',
+            'created_at'=>'required'
+        ]);
 
-        // Produk::create($request->all());
+        Produk::create($request->all());
         return redirect('/produks');
         // print_r($request->get('as'));
     }
@@ -102,6 +99,7 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        //
+       Produk::destroy ($produk->id);
+       return redirect('/produks');
     }
 }
