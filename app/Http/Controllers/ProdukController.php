@@ -36,13 +36,13 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama'=>'required',
-            'jenis_produk'=>'required',
-            'stok'=>'required|numeric',
-            'harga_produk'=>'required|numeric',
-            'created_at'=>'required'
-        ]);
+        // $request->validate([
+        //     'nama'=>'required',
+        //     'jenis_produk'=>'required',
+        //     'stok'=>'required|numeric',
+        //     'harga_produk'=>'required|numeric',
+        //     'created_at'=>'required'
+        // ]);
 
         Produk::create($request->all());
         return redirect('/produks');

@@ -23,8 +23,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                         <label for="nama_produk">Nama Produk</label>
-                                        <input type="text" name="nama_produk" class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk" placeholder="Masukkan Nama">
-                                        @error ('nama_produk') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                        <input type="text" name="nama_produk" class="form-control" id="nama_produk" placeholder="Masukkan Nama">
                                         <br/>
                                         <label for="jenis_produk">Jenis Produk</label>
                                         <input type="text" class="form-control" id="jenis_produk" name="jenis_produk" placeholder="Jenis Produk">
