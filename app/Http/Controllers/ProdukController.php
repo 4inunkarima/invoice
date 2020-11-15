@@ -37,17 +37,19 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $produk = new Produk;
-        $produk->nama_produk = $request->nama_produk;
-        $produk->jenis_produk = $request->jenis_produk;
-        $produk->stok = $request->stok;
-        $produk->harga_produk = $request->harga_produk;
-        $produk->deskripsi_produk = $request->deskripsi_produk;
-        $produk->catatan = $request->catatan;
-        $produk->created_at = $request->created_at;
+        $produk->nama_produk = $request->get('nama_produk');
+        $produk->jenis_produk = $request->get('jenis_produk');
+        $produk->stok = $request->get('stok');
+        $produk->harga_produk = $request->get('harga_produk');
+        $produk->deskripsi_produk = $request->get('deskripsi_produk');
+        $produk->catatan = $request->get('catatan');
+        $produk->created_at = $request->get('created_at');
     
         $produk->save();
 
+        // Produk::create($request->all());
         return redirect('/produks');
+        // print_r($request->get('as'));
     }
 
     /**
@@ -69,7 +71,15 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        //
+        $produk = $this->produks->find($nama_produk);
+
+        if (empty($produk)) {
+            Flash::error('Produk not found');
+
+            return redirect(route('produks.index'));
+        }
+
+        return view('produks.create')->with('produk', $produk);
     }
 
     /**
