@@ -24,7 +24,9 @@ Route::resource('dashboard', 'DashboardController');
 
 Route::resource('customers', 'CustomerController');
 
+//produk
 Route::resource('produks', 'ProdukController');
+Route::post('/produks', 'ProdukController@store');
 
 Route::resource('invoices', 'InvoiceController');
 

@@ -2,43 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateProdukRequest;
-use App\Http\Requests\UpdateProdukRequest;
-use App\Repositories\ProdukRepository;
-use App\Http\Controllers\AppBaseController;
+use App\Produk;
 use Illuminate\Http\Request;
-use Flash;
-use Response;
 
-class ProdukController extends AppBaseController
+class ProdukController extends Controller
 {
-    /** @var  ProdukRepository */
-    private $produkRepository;
-
-    public function __construct(ProdukRepository $produkRepo)
-    {
-        $this->produkRepository = $produkRepo;
-    }
-
     /**
-     * Display a listing of the Produk.
+     * Display a listing of the resource.
      *
-     * @param Request $request
-     *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $produks = $this->produkRepository->all();
-
-        return view('produks.index')
-            ->with('produks', $produks);
+        $produks = Produk::all();
+        return view('produks.index', ['produk' => $produks]);
     }
 
     /**
-     * Show the form for creating a new Produk.
+     * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -46,111 +29,69 @@ class ProdukController extends AppBaseController
     }
 
     /**
-     * Store a newly created Produk in storage.
+     * Store a newly created resource in storage.
      *
-     * @param CreateProdukRequest $request
-     *
-     * @return Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function store(CreateProdukRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
+        $produk = new Produk;
+        $produk->nama_produk = $request->nama_produk;
+        $produk->jenis_produk = $request->jenis_produk;
+        $produk->stok = $request->stok;
+        $produk->harga_produk = $request->harga_produk;
+        $produk->deskripsi_produk = $request->deskripsi_produk;
+        $produk->catatan = $request->catatan;
+        $produk->created_at = $request->created_at;
+    
+        $produk->save();
 
-        $produk = $this->produkRepository->create($input);
-
-        Flash::success('Produk saved successfully.');
-
-        return redirect(route('produks.index'));
+        return redirect('/produks');
     }
 
     /**
-     * Display the specified Produk.
+     * Display the specified resource.
      *
-     * @param int $id
-     *
-     * @return Response
+     * @param  \App\Produk  $produk
+     * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Produk $produk)
     {
-        $produk = $this->produkRepository->find($id);
-
-        if (empty($produk)) {
-            Flash::error('Produk not found');
-
-            return redirect(route('produks.index'));
-        }
-
-        return view('produks.show')->with('produk', $produk);
+        return view('produks.show', compact('produk'));
     }
 
     /**
-     * Show the form for editing the specified Produk.
+     * Show the form for editing the specified resource.
      *
-     * @param int $id
-     *
-     * @return Response
+     * @param  \App\Produk  $produk
+     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Produk $produk)
     {
-        $produk = $this->produkRepository->find($id);
-
-        if (empty($produk)) {
-            Flash::error('Produk not found');
-
-            return redirect(route('produks.index'));
-        }
-
-        return view('produks.edit')->with('produk', $produk);
+        //
     }
 
     /**
-     * Update the specified Produk in storage.
+     * Update the specified resource in storage.
      *
-     * @param int $id
-     * @param UpdateProdukRequest $request
-     *
-     * @return Response
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Produk  $produk
+     * @return \Illuminate\Http\Response
      */
-    public function update($id, UpdateProdukRequest $request)
+    public function update(Request $request, Produk $produk)
     {
-        $produk = $this->produkRepository->find($id);
-
-        if (empty($produk)) {
-            Flash::error('Produk not found');
-
-            return redirect(route('produks.index'));
-        }
-
-        $produk = $this->produkRepository->update($request->all(), $id);
-
-        Flash::success('Produk updated successfully.');
-
-        return redirect(route('produks.index'));
+        //
     }
 
     /**
-     * Remove the specified Produk from storage.
+     * Remove the specified resource from storage.
      *
-     * @param int $id
-     *
-     * @throws \Exception
-     *
-     * @return Response
+     * @param  \App\Produk  $produk
+     * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Produk $produk)
     {
-        $produk = $this->produkRepository->find($id);
-
-        if (empty($produk)) {
-            Flash::error('Produk not found');
-
-            return redirect(route('produks.index'));
-        }
-
-        $this->produkRepository->delete($id);
-
-        Flash::success('Produk deleted successfully.');
-
-        return redirect(route('produks.index'));
+        //
     }
 }
