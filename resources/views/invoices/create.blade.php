@@ -29,7 +29,7 @@
                                     <div class="media-body">
                                         <h5 class="mt-0 mb-1 float-right">logo</h5>
                                     </div>
-                                    <img src="..." class="ml-3" alt="...">
+                                    <img src="" class="ml-3" alt="...">
                                 </div>
                                 <div class="form-group col-mb-4">
                                     <label for="exampleFormControlTextarea1">Description</label>
@@ -70,47 +70,29 @@
                                         <input type="text" class="form-control-plaintext" id="staticEmail2" value="Kantor LALALA">  
                                         <p>Jl. Petemon IV No.32-A, RT 014/RW 008<br/>Kel. Petemon, Kec. Sawahan, Kota Surabaya<br/>Jawa Timur, 60252<br/>0839-0868-2951</p>
                                         <br/>
-                                        <label for="Address">To</label>
-                                        <input type="text" class="form-control" placeholder="Client">
+                                        <br/>
+                                        
+                                            <h4>Pelanggan: </h4>
+                                            <p>Nama: {{ $invoice->customer->nama }}<br>
+                                            Alamat: {{ $invoice->customer->alamat }}<br>
+                                            Telephone: {{ $invoice->customer->telepon }} <br>
+                                            Email: {{ $invoice->customer->email }}
+                                            </p>
+                                        
                                         </div>
                                         <div class="col">
-                                        <label for="Address">Date</label>
-                                        <input type="text" class="form-control" placeholder="Add Payment Date..">
-                                        <br/>
-                                        <label for="Address">Invoice Due</label>
-                                        <select id="inputState" class="form-control">
-                                            <option selected>24 hours</option>
-                                            <option>1 day</option>
-                                        </select>
-                                        <br/>
-                                        <label for="Address">Purchase Order Number</label>
-                                        <input type="text" class="form-control" placeholder="Order Number">
-                                        </div>
-                                    </div>
-                                </form>
-                                <hr />
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                        <label for="Address">Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Item Name & Description" rows="4"></textarea>
-                                        </div>
-                                        <div class="col-md-2">
-                                        <label for="Address">Quantity</label>
-                                        <input type="text" class="form-control" placeholder="Quantity">
-                                        </div>
-                                        <div class="col-md-2">
-                                        <label for="Address">Rate</label>
-                                        <input type="text" class="form-control" placeholder="0.00">
-                                        <br/>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Unit</option>
-                                                <option>10</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-2">
-                                        <label for="Address">Amount</label>
-                                        <input type="text" class="form-control" placeholder="USD   0.00">
+                                        
+                                            <label for="Address">Date</label>
+                                            <input type="text" class="form-control" placeholder="Add Payment Date..">
+                                            <br/>
+                                            <!-- <form action="{{ route('invoice.update', ['id' => $invoice->id]) }}" method="post">
+                                                <label for="due_date">Batas Pembayaran</label>
+                                                <input type="date" class="form-control" id="due_date" name="due_date">  
+                                            </form> -->
+                                            <br/>
+                                            <label for="Address">Purchase Order Number</label>
+                                            <input type="text" class="form-control" placeholder="Order Number">
+                                        </form>
                                         </div>
                                     </div>
                                 </form>
@@ -120,7 +102,7 @@
 										<ul class="statement_amount_container">
                                             <li class="statement_amount">
                                                 <div class="col">Sub Total</div>
-                                                <input class="col no_input" type="text" disabled="" data-format-number="precision" value="0.00" data-calculation="subtotal">
+                                                <input class="col no_input" type="text" disabled="" data-format-number="precision" value="Rp. {{ number_format($invoice->total) }}" data-calculation="subtotal">
                                             </li>
                                         </ul>                                                         
                                         <div id="tax_discount_shipping_wrapper">
@@ -129,25 +111,87 @@
                                         </div>
                                         <ul class="statement_amount_container">
                                         <li class="statement_amount no_border">
-                                            <div class="col"><strong>Total (<span data-currency="code">USD</span>)</strong></div>
-                                            <strong><input class="col no_input bold" type="text" disabled="" data-format-number="precision" data-calculation="total" value="0.00"></strong>
+                                            <div class="col"><strong>Biaya (<span data-currency="code">Tax</span>)</strong></div>
+                                            <strong><input class="col no_input bold" type="text" disabled="" data-format-number="precision" data-calculation="total" value="Rp. {{ number_format($invoice->tax) }}"></strong>
                                         </li>
                                         </ul>
-                                        <hr />
+                                        <!-- <hr/> -->
                                         <ul class="statement_amount_container total_due draft">
                                         <li class="statement_amount">
                                             <div class="input-group border border-secondary">
                                                     <div class="input-group-prepend">
-                                                    <div class="input-group-text">Balance</div>
+                                                    <div class="input-group-text">Total Harga</div>
                                                     </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" value="USD">
+                                                    <input type="text" class="form-control" id="inlineFormInputGroup" value="Rp. {{ number_format($invoice->total_harga) }}">
                                             </div>
                                         </li>
                                         </ul>
                                     </div>
                                 </div>
-                                <br/>
-                                <form>
+                                <hr />
+                            <div class="row">
+                            <div class="col-md-12 mt-3">
+                                <form action="{{ route('invoice.update', ['id' => $invoice->id]) }}" method="post">
+                                @csrf
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <td>#</td>
+                                            <td>Produk</td>
+                                            <td>Qty</td>
+                                            <td>Harga</td>
+                                            <td>Subtotal</td>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <!-- MENAMPILKAN PRODUK YANG TELAH DITAMBAHKAN -->
+                                    <tbody>
+                                        @php $no = 1 @endphp
+                                        @foreach ($invoice->detail as $detail)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $detail->produk->nama_produk }}</td>
+                                            <td>{{ $detail->qty }}</td>
+                                            <td>Rp {{ number_format($detail->harga_produk) }}</td>
+                                            <td>Rp {{ $detail->subtotal }}</td>
+                                            <td>
+                                            <form action="{{ route('invoice.delete_produk', $detail->id) }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE" class="form-control">
+                                                    <button class="btn btn-danger btn-sm">Hapus</button>
+                                            </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="hidden" name="_method" value="PUT" class="form-control">
+                                                <select name="produk_id" class="form-control">
+                                                    <option value="">Pilih Produk</option>
+                                                    @foreach ($produks as $produk)
+                                                    <option value="{{ $produk->id }}">{{ $produk->nama_produk }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" min="1" value="1" name="qty" class="form-control" required>
+                                            </td>
+                                            <td colspan="3">
+                                                <button class="btn btn-primary btn-sm">Tambahkan</button>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                    <!-- FORM UNTUK MEMILIH PRODUK YANG AKAN DITAMBAHKAN -->
+                                </table>
+                                </form>
+                            </div>
+                            </div>
+                            <br/>
+                                <!-- <form>
                                     <div class="row">
                                         <div class="col-md-12"> 
                                             <div class="form-group"> 
@@ -164,12 +208,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </form> -->
+                                <div class="form-group">
+                                    <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">Kembali</a>
+                                </div>
                                 <br/>
                                 <br/>
-                                <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Send Invoice</a>
-                                <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Draft</a>
-                            
+                                <!-- <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Send Invoice</a>
+                                <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Draft</a> -->
                             </div>
                         </div>
                     </div>

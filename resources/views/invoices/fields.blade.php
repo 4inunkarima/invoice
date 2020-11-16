@@ -1,65 +1,65 @@
-<!-- Kode Invoice Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('kode_invoice', 'Kode Invoice:') !!}
-    {!! Form::text('kode_invoice', null, ['class' => 'form-control']) !!}
-</div>
+@extends('layouts.app')
 
-<!-- Tanggal Invoice Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('tanggal_invoice', 'Tanggal Invoice:') !!}
-    {!! Form::text('tanggal_invoice', null, ['class' => 'form-control','id'=>'tanggal_invoice']) !!}
-</div>
-
-@push('scripts')
-   <script type="text/javascript">
-           $('#tanggal_invoice').datetimepicker({
-               format: 'YYYY-MM-DD HH:mm:ss',
-               useCurrent: true,
-               icons: {
-                   up: "icon-arrow-up-circle icons font-2xl",
-                   down: "icon-arrow-down-circle icons font-2xl"
-               },
-               sideBySide: true
-           })
-       </script>
-@endpush
-
-
-<!-- Status Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('status', 'Status:') !!}
-    {!! Form::text('status', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Due Date Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('due_date', 'Due Date:') !!}
-    {!! Form::text('due_date', null, ['class' => 'form-control','id'=>'due_date']) !!}
-</div>
-
-@push('scripts')
-   <script type="text/javascript">
-           $('#due_date').datetimepicker({
-               format: 'YYYY-MM-DD HH:mm:ss',
-               useCurrent: true,
-               icons: {
-                   up: "icon-arrow-up-circle icons font-2xl",
-                   down: "icon-arrow-down-circle icons font-2xl"
-               },
-               sideBySide: true
-           })
-       </script>
-@endpush
-
-
-<!-- Detail Transaksi Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('detail_transaksi', 'Detail Transaksi:') !!}
-    {!! Form::text('detail_transaksi', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('invoices.index') }}" class="btn btn-secondary">Cancel</a>
-</div>
+@section('content')
+<div class="row">
+                            <div class="col-md-12 mt-3">
+                                <form action="{{ route('invoice.update', ['id' => $invoice->id]) }}" method="post">
+                                @csrf
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <td>#</td>
+                                            <td>Produk</td>
+                                            <td>Qty</td>
+                                            <td>Harga</td>
+                                            <td>Subtotal</td>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <!-- MENAMPILKAN PRODUK YANG TELAH DITAMBAHKAN -->
+                                    <tbody>
+                                        @php $no = 1 @endphp
+                                        @foreach ($invoice->detail as $detail)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $detail->produk->nama_produk }}</td>
+                                            <td>{{ $detail->qty }}</td>
+                                            <td>Rp {{ number_format($detail->harga_produk) }}</td>
+                                            <td>Rp {{ $detail->subtotal }}</td>
+                                            <td>
+                                            <form action="{{ route('invoice.delete_produk', $detail->id) }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE" class="form-control">
+                                                    <button class="btn btn-danger btn-sm">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="hidden" name="_method" value="PUT" class="form-control">
+                                                <select name="produk_id" class="form-control">
+                                                    <option value="">Pilih Produk</option>
+                                                    @foreach ($produks as $produk)
+                                                    <option value="{{ $produk->id }}">{{ $produk->nama_produk }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" min="1" value="1" name="qty" class="form-control" required>
+                                            </td>
+                                            <td colspan="3">
+                                                <button class="btn btn-primary btn-sm">Tambahkan</button>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                    <!-- FORM UNTUK MEMILIH PRODUK YANG AKAN DITAMBAHKAN -->
+                                </table>
+                                </form>
+                            </div>
+                            </div>
+@endsection

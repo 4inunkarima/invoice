@@ -3,17 +3,17 @@
         <thead>
             <tr>
                 <th>Kode Invoice</th>
-        <th>Tanggal Invoice</th>
-        <th>Status</th>
-        <th>Due Date</th>
-        <th>Detail Transaksi</th>
+                <th>Tanggal Invoice</th>
+                <th>Status</th>
+                <th>Due Date</th>
+                <th>Detail Transaksi</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($invoices as $invoice)
             <tr>
-                <td>{{ $invoice->kode_invoice }}</td>
+            <td>{{ $invoice->kode_invoice }}</td>
             <td>{{ $invoice->tanggal_invoice }}</td>
             <td>{{ $invoice->status }}</td>
             <td>{{ $invoice->due_date }}</td>

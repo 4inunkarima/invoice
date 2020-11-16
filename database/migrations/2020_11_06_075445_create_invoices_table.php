@@ -20,10 +20,10 @@ class CreateInvoicesTable extends Migration
             $table->boolean('status')->default(false);
             $table->string('note')->nullable();
             $table->integer('total');
-            $table->date('tanggal_invoice');
+            // $table->date('tanggal_invoice');
             // $table->string('status');
-            $table->date('due_date');
-            $table->string('detail_transaksi');
+            // $table->date('due_date');
+            // $table->string('detail_transaksi');
             $table->timestamps();
             $table->softDeletes();
         });

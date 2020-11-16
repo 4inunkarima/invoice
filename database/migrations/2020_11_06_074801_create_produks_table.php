@@ -19,7 +19,9 @@ class CreateProduksTable extends Migration
             $table->string('nama_produk');
             $table->string('jenis_produk');
             $table->string('stok');
+            $table->string('harga_produk');
             $table->string('deskripsi_produk');
+            $table->string('catatan');
             $table->timestamps();
             $table->softDeletes();
         });

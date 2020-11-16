@@ -17,7 +17,7 @@ class CreateInvoiceDetailsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('invoice_id');
             $table->unsignedInteger('produk_id');
-            $table->integer('price');
+            $table->string('harga');
             $table->integer('qty');
             $table->timestamps();
             $table->softDeletes();

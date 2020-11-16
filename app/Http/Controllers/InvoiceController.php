@@ -7,6 +7,12 @@ use App\Http\Requests\UpdateInvoiceRequest;
 use App\Repositories\InvoiceRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+// use Barryvdh\DomPDF\Facade as PDF;
+use App\Customer;
+use App\Invoice;
+use App\Invoice_detail;
+use App\Produk;
+use PDF;
 use Flash;
 use Response;
 
@@ -29,22 +35,57 @@ class InvoiceController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $invoices = $this->invoiceRepository->all();
-
-        return view('invoices.index')
-            ->with('invoices', $invoices);
+        $invoice  = Invoice::with(['customer', 'detail'])->orderBy('id', 'ASC')->paginate(10);
+        return view('invoices.index', compact('invoice'));
     }
 
+    // public function show (Request $request)
+    // {
+    //     $invoice = Invoice::with(['customer','detail','detail.produk'])->find($id);
+    //     $produks = Produk::orderBy('nama_produk','ASC')->get();
+    //     return view('invoices.show',compact('invoice','produks'));
+    // }
     /**
      * Show the form for creating a new Invoice.
      *
      * @return Response
      */
-    public function create()
+    public function select()
     {
-        return view('invoices.create');
+        $customers = Customer::orderBy('created_at','DESC')->get();
+        return view('invoices.select',['customers'=>$customers]);
     }
 
+    public function save(Request $request)
+    {
+        $this->validate($request,[
+            'customer_id'=>'required|exists:customers,id'
+        ]);
+
+        try{
+            $invoice = Invoice::create([
+                'customer_id'=>$request->customer_id,
+                'total'=>0
+            ]);
+            return redirect(route('invoice.create',['id'=>$invoice->id]));
+        }catch(\Exception $e){
+            return redirect()->back()->with(['error'=>$e->getMessage()]);
+        }
+    }
+
+      /**
+     * Show the form for editing the specified Invoice.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $invoice = Invoice::with(['customer','detail','detail.produk'])->find($id);
+        $produks = Produk::orderBy('nama_produk','ASC')->get();
+        return view('invoices.create',compact('invoice','produks'));
+    }
     /**
      * Store a newly created Invoice in storage.
      *
@@ -82,27 +123,6 @@ class InvoiceController extends AppBaseController
 
         return view('invoices.show')->with('invoice', $invoice);
     }
-
-    /**
-     * Show the form for editing the specified Invoice.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $invoice = $this->invoiceRepository->find($id);
-
-        if (empty($invoice)) {
-            Flash::error('Invoice not found');
-
-            return redirect(route('invoices.index'));
-        }
-
-        return view('invoices.edit')->with('invoice', $invoice);
-    }
-
     /**
      * Update the specified Invoice in storage.
      *
@@ -111,21 +131,42 @@ class InvoiceController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateInvoiceRequest $request)
+    public function update(Request $request, $id)
     {
-        $invoice = $this->invoiceRepository->find($id);
+        $this->validate($request,[
+            'produk_id'=>'required|exists:produks,id',
+            'qty'=>'required|integer'
+        ]);
 
-        if (empty($invoice)) {
-            Flash::error('Invoice not found');
+        try{
+            $invoice = Invoice::find($id);
+            $produk = Produk::find($request->produk_id);
+            $invoice_detail = $invoice->detail()->where('produk_id',$produk->id)->first();
+            
+            if ($invoice_detail){
+                $invoice_detail->update([
+                    'qty'=>$invoice_detail->qty+$request->qty
+                ]);
+            }else{
+                Invoice_detail::create([
+                    'invoice_id'=>$invoice->id,
+                    'produk_id'=>$request->produk_id,
+                    'harga_produk'=>$produk->harga_produk,
+                    //'due_date'=>$invoice->due_date,
+                    'qty'=>$request->qty
+                ]);
+            }
+                return redirect()->back()->with(['succes'=>'produk telah ditambahkan']);
+            }catch (\Exception $e){
+                return redirect()->back()->with(['error'=>$e->getmessage()]);
+            }
+        }    
 
-            return redirect(route('invoices.dashboard'));
-        }
-
-        $invoice = $this->invoiceRepository->update($request->all(), $id);
-
-        Flash::success('Invoice updated successfully.');
-
-        return redirect(route('invoices.dashboard'));
+    public function deleteProduk($id)
+    {
+        $detail=Invoice_detail::find($id);
+        $detail->delete();
+        return redirect()->back()->with(['succes'=>'Produk berhasil dihapus.']);
     }
 
     /**
@@ -139,18 +180,15 @@ class InvoiceController extends AppBaseController
      */
     public function destroy($id)
     {
-        $invoice = $this->invoiceRepository->find($id);
+        $invoice = Invoice::find($id);
+        $invoice->delete();
+        return redirect()->back()->with(['success' => 'Data telah dihapus']);
+    }
 
-        if (empty($invoice)) {
-            Flash::error('Invoice not found');
-
-            return redirect(route('invoices.index'));
-        }
-
-        $this->invoiceRepository->delete($id);
-
-        Flash::success('Invoice deleted successfully.');
-
-        return redirect(route('invoices.index'));
+    public function generateInvoice($id)
+    {
+        $invoice=Invoice::with(['customer','detail','detail.produk'])->find($id);
+        $pdf=PDF::loadview('invoices.print',compact('invoice'))->setPaper('a4','landscape');
+        return $pdf->stream();
     }
 }

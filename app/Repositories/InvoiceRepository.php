@@ -17,11 +17,13 @@ class InvoiceRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'kode_invoice',
-        'tanggal_invoice',
+        'id',
+        'customer_id',
         'status',
-        'due_date',
-        'detail_transaksi'
+        'total',
+        // 'tanggal_invoice',
+        // 'due_date',
+        // 'detail_transaksi'
     ];
 
     /**

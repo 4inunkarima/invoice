@@ -20,7 +20,9 @@ class ProdukRepository extends BaseRepository
         'nama_produk',
         'jenis_produk',
         'stok',
-        'deskripsi_produk'
+        'harga_produk',
+        'deskripsi_produk',
+        'catatan'
     ];
 
     /**

@@ -10,11 +10,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version November 6, 2020, 7:54 am UTC
  *
- * @property string $kode_invoice
- * @property string $tanggal_invoice
+ * @property string $id
+ * @property string $customer_id
  * @property string $status
- * @property string $due_date
- * @property string $detail_transaksi
+ * @property string $note
+ * @property string $total
  */
 class Invoice extends Model
 {
@@ -28,11 +28,11 @@ class Invoice extends Model
 
 
     public $fillable = [
-        'kode_invoice',
-        'tanggal_invoice',
+        'id',
+        'customer_id',
         'status',
-        'due_date',
-        'detail_transaksi'
+        'note',
+        'total'
     ];
 
     /**
@@ -42,11 +42,11 @@ class Invoice extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'kode_invoice' => 'string',
-        'tanggal_invoice' => 'date',
+        'customer_id' => 'string',
+        // 'tanggal_invoice' => 'date',
         'status' => 'string',
-        'due_date' => 'date',
-        'detail_transaksi' => 'string'
+        'note' => 'string',
+        'total' => 'integer'
     ];
 
     /**
