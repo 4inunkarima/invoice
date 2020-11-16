@@ -1,10 +1,9 @@
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>Basic Information</strong>
-                            </div>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+                <i class="fa fa-plus-square-o fa-lg"></i>
+                <strong>Basic Information</strong>
+                        </div>
                             <div class="card-body">
                                 <div class="media">
                                     <img src="views/customers/prof.png" class="mr-3" alt="prof">
@@ -21,34 +20,26 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                         <label for="nama">Nama</label>
-                                        <input type="text" name="nama" class="form-control" placeholder="Nama">
+                                        <input type="text" name="nama" value="{{$customer->email}}" class="form-control" >
                                         <br/>
                                         <label for="email">Email</label>
-                                        <input type="text" name="email" class="form-control" placeholder="Email">
+                                        <input type="text" name="email" value="{{$customer->email}}" class="form-control">
                                         </div>
                                         <div class="col-md-3">
                                         <label for="organisasi">Nama Organisasi</label>
-                                        <input type="text" name="organisasi" class="form-control" placeholder="Nama Organisasi">
+                                        <input type="text" name="organisasi" value="{{$customer->organisasi}}" class="form-control">
                                         <br/>
                                         <label for="username">Username</label>
-                                        <input type="text" name="username" class="form-control" placeholder="Username">
+                                        <input type="text" name="username" value="{{$customer->username}}" class="form-control">
                                         </div>
                                         <div class="col">
                                         <label for="mata_uang">Mata Uang</label>
-                                        <select id="inputState" name="mata_uang"  class="form-control">
-                                            <option selected>Choose..</option>
-                                            <option>IDR</option>
-                                            <option>USD</option>
-                                        </select>
+                                        <input type="text" name="mata_uang" value="{{$customer->mata_uang}}"  class="form-control">
                                         <br/>
                                         <label for="bahasa">Bahasa</label>
-                                        <select id="inputState" name="bahasa" class="form-control">
-                                            <option selected>Choose..</option>
-                                            <option>English</option>
-                                            <option>Indonesia</option>
-                                        </select> 
+                                        <input type="text" name="bahasa" value="{{$customer->bahasa}}" class="form-control">
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
@@ -64,35 +55,26 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                         <label for="alamat">Alamat</label>
-                                        <input type="text" name="alamat" class="form-control" placeholder="Alamat">
+                                        <input type="text" name="alamat" value="{{$customer->alamat}}" class="form-control">
                                         <br/>
                                         <label for="alamat_tambahan">Alamat Tambahan</label>
-                                        <input type="text" name="alamat_tambahan" class="form-control" placeholder="Alamat Tambahan">
+                                        <input type="text" name="alamat_tambahan" value="{{$customer->alamat_tambahan}}" class="form-control">
                                         </div>
                                         <div class="col-md-3">
                                         <label for="kode_pos">Kode Pos</label>
-                                        <input type="text" name="kode_pos" class="form-control" placeholder="Kode Pos">
+                                        <input type="text" name="kode_pos" value="{{$customer->kode_pos}}" class="form-control">
                                         <br/>
                                         <label for="kota">Kota</label>
-                                        <input type="text" name="kota" class="form-control" placeholder="Kota">
+                                        <input type="text" name="kota" value="{{$customer->kota}}" class="form-control">
                                         </div>
                                         <div class="col-md-3">
                                         <label for="state">State</label>
-                                        <input type="text" name="state" class="form-control" placeholder="State">
+                                        <input type="text" name="state" value="{{$customer->state}}" class="form-control">
                                         <br/>
                                         <label for="negara">Negara</label>
-                                        <select id="inputState" name="negara" class="form-control">
-                                            <option selected>Choose..</option>
-                                            <option>Indonesia</option>
-                                            <option>Brunei Darussalam</option>
-                                            <option>Kamboja</option>
-                                            <option>Laos</option>
-                                            <option>Myanmar</option>
-                                            <option>Singapura</option>
-                                            <option>Filipina</option>
-                                        </select> 
+                                        <input type="text" name="negara" value="{{$customer->negara}}" class="form-control">
                                     </div>
-                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -105,35 +87,32 @@
                                 <strong>Aditional Informations</strong>
                             </div>
                             <div class="card-body">
+                                
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="telepon">Telepon</label>
-                                            <input type="text" name="telepon" class="form-control" placeholder="Telepon">
+                                            <input type="text" name="telepon" value="{{$customer->telepon}}" class="form-control">
                                             <br/>
                                             <label for="gender">Gender</label>
-                                            <select id="inputState" name="gender" class="form-control">
-                                                <option selected>Choose...</option>
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                            </select>
+                                            <input type="text" name="gender" value="{{$customer->gender}}" class="form-control">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="fax_number">Fax Number</label>
-                                            <input type="text" name="fax_number" class="form-control" placeholder="Fax Number">
+                                            <input type="text" name="fax_number" value="{{$customer->fax_number}}" class="form-control">
                                             <br/>
                                             <label for="note">Note</label>
-                                            <input class="form-control" name="note" id="exampleFormControlTextarea1" rows="4">
+                                            <input class="form-control" name="note" value="{{$customer->note}}" type="text" rows="4">
                                         </div>
                                     </div>
                                 <hr />
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="password">Password</label>
-                                            <input type="text" name="password" class="form-control" placeholder="Password">
+                                            <input type="text" name="password" value="{{$customer->password}}" class="form-control">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="konfirmasi_password">Konfirmasi Password</label>
-                                            <input type="text" name="konfirmasi_password" class="form-control" placeholder="Konfirmasi Password">
+                                            <input type="text" name="konfirmasi_password" value="{{$customer->konfirmasi_password}}" class="form-control">
                                         </div>
                                     </div>
                                 <br/>

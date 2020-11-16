@@ -4,11 +4,13 @@
             <tr>
                 <th>Nama</th>
         <th>Email</th>
+        <th>Organisasi</th>
         <th>Telepon</th>
         <th>Alamat</th>
         <th>Gender</th>
         <th>Username</th>
         <th>Password</th>
+        <th>Waktu</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -17,11 +19,13 @@
             <tr>
                 <td>{{ $customer->nama }}</td>
             <td>{{ $customer->email }}</td>
+            <td>{{ $customer->organisasi }}</td>
             <td>{{ $customer->telepon }}</td>
             <td>{{ $customer->alamat }}</td>
             <td>{{ $customer->gender }}</td>
             <td>{{ $customer->username }}</td>
             <td>{{ $customer->password }}</td>
+            <td>{{ $customer->created_at }}</td>
                 <td>
                     {!! Form::open(['route' => ['customers.destroy', $customer->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

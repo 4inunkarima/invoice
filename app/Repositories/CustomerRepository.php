@@ -18,11 +18,22 @@ class CustomerRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'nama',
+        'organisasi',
+        'mata_uang',
         'email',
         'telepon',
+        'fax_number',
+        'note',
+        'konfirmasi_password',
         'alamat',
+        'kode_pos',
+        'state',
+        'alamat_tambahan',
+        'kota',
+        'negara',
         'gender',
         'username',
+        'bahasa',
         'password'
     ];
 

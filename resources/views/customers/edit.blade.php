@@ -20,7 +20,7 @@
                           <div class="card-body">
                               {!! Form::model($customer, ['route' => ['customers.update', $customer->id], 'method' => 'patch']) !!}
 
-                              @include('customers.fields')
+                              @include('customers.edit_fields')
 
                               {!! Form::close() !!}
                             </div>
