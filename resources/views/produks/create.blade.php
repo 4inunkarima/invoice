@@ -23,17 +23,17 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                         <label for="nama_produk">Nama Produk</label>
-                                        <input type="text" name="nama_produk" class="form-control" id="nama_produk" placeholder="Masukkan Nama">
+                                        <input type="text" name="nama_produk" class="form-control" placeholder="Masukkan Nama">
                                         <br/>
                                         <label for="jenis_produk">Jenis Produk</label>
-                                        <input type="text" class="form-control" id="jenis_produk" name="jenis_produk" placeholder="Jenis Produk">
+                                        <input type="text" class="form-control" name="jenis_produk" placeholder="Jenis Produk">
                                         </div>
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-4">
                                         <label for="stok">Stok</label>
                                         <div class="input-group mb-3">
-                                           <input type="text" class="form-control" id="stok" name="stok" placeholder="Stok"> 
+                                           <input type="text" class="form-control" name="stok" placeholder="Stok"> 
                                             <div class="input-group-prepend">
                                             <select id="inputState" class="input-group-text">
                                                 <option selected>Choose...</option>
@@ -44,7 +44,7 @@
                                         </div>
                                         <br/>
                                         <label for="deskripsi_produk">Deskripsi Produk</label>
-                                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" rows="4"></textarea>
+                                        <textarea class="form-control" name="deskripsi_produk" rows="4"></textarea>
                                         </div>
                                     </div>
                                     <hr/>
@@ -55,17 +55,18 @@
                                             <div class="input-group-prepend">
                                             <div class="input-group-text">IDR</div>
                                             </div>
-                                            <input type="text" class="form-control" id="harga_produk" name="harga_produk" placeholder="Price">
+                                            <input type="text" class="form-control" name="harga_produk" placeholder="Price">
                                         </div>
                                         <br/>
                                         <label for="created_at">Tanggal Masuk</label>
-                                        <input type="date" class="form-control" id="created_at" name="created_at">  
+                                        <input type="date" class="form-control" name="created_at">  
                                         <br/>
                                         <label for="catatan">Catatan Tambahan</label>
-                                        <textarea class="form-control" id="catatan" name="catatan" rows="4"></textarea>
+                                        <textarea class="form-control" name="catatan" id="catatan" rows="4"></textarea>
                                     </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-lg active my-3" aria-pressed="true">Add Data</button>
+                                    <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true">Save</button>
+                                    <a href="{{ route('produks.index') }}" class="btn btn-secondary">Cancel</a>
                                 </form>
                                 <br/>
                                 

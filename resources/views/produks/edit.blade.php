@@ -45,7 +45,7 @@
                                         </div>
                                         <br/>
                                         <label for="deskripsi_produk">Deskripsi Produk</label>
-                                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" rows="4" value="{{ $produk->deskripsi_produk }}"></textarea>
+                                        <input class="form-control" name="deskripsi_produk" rows="4" value="{{ $produk->deskripsi_produk }}">
                                         </div>
                                     </div>
                                     <hr/>
@@ -60,10 +60,10 @@
                                         </div>
                                         <br/>
                                         <label for="created_at">Tanggal Masuk</label>
-                                        <input type="date" class="form-control" id="created_at" name="created_at" value="{{ $produk->created_at }}">  
+                                        <input type="date" class="form-control" name="created_at" value="{{ $produk->created_at }}">  
                                         <br/>
                                         <label for="catatan">Catatan Tambahan</label>
-                                        <textarea class="form-control" id="catatan" name="catatan" rows="4"value="{{ $produk->catatan }}"></textarea>
+                                        <textarea class="form-control" id="catatan" name="catatan" rows="4" value="{{ $produk->catatan }}"></textarea>
                                     </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-lg active my-3" aria-pressed="true">Save Change</button>

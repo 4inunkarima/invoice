@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCatatanToProduksTable extends Migration
+class AddCatatanFieldToProduksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddCatatanToProduksTable extends Migration
      */
     public function up()
     {
-        Schema::table('produks', function (Blueprint $table) {
-            //
-        });
+        if (Schema::hasTable('produks')) {
+            Schema::table('produks', function (Blueprint $table) {
+                $table->textarea('catatan')->after('deskripsi_produk');
+            });
+        }
     }
 
     /**

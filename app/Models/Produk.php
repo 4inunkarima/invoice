@@ -30,7 +30,9 @@ class Produk extends Model
         'nama_produk',
         'jenis_produk',
         'stok',
-        'deskripsi_produk'
+        'harga_produk',
+        'deskripsi_produk',
+        'catatan'
     ];
 
     /**
@@ -43,7 +45,10 @@ class Produk extends Model
         'nama_produk' => 'string',
         'jenis_produk' => 'string',
         'stok' => 'string',
-        'deskripsi_produk' => 'string'
+        'harga_produk' => 'integer',
+        'deskripsi_produk' => 'string',
+        'catatan' => 'textarea'
+        
     ];
 
     /**
