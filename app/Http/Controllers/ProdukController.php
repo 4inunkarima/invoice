@@ -36,17 +36,13 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'nama'=>'required',
-        //     'jenis_produk'=>'required',
-        //     'stok'=>'required|numeric',
-        //     'harga_produk'=>'required|numeric',
-        //     'created_at'=>'required'
-        // ]);
+        $request->validate([
+            'nama_produk'=>'required',
+            'harga_produk'=>'required',
+        ]);
 
         Produk::create($request->all());
-        return redirect('/produks');
-        // print_r($request->get('as'));
+        return redirect('/produks')->with('status', 'Isi dengan Tepat!');
     }
 
     /**
@@ -68,15 +64,7 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        $produk = $this->produks->find($nama_produk);
-
-        if (empty($produk)) {
-            Flash::error('Produk not found');
-
-            return redirect(route('produks.index'));
-        }
-
-        return view('produks.create')->with('produk', $produk);
+        return view('produks.edit', compact('produk'));
     }
 
     /**
@@ -88,7 +76,15 @@ class ProdukController extends Controller
      */
     public function update(Request $request, Produk $produk)
     {
-        //
+        Produk::where('id', $produk->id)
+            ->update([
+                'nama_produk' => $request->nama_produk,
+                'jenis_produk' => $request->jenis_produk,
+                'stok' => $request->stok,
+                'harga_produk' => $request->harga_produk,
+                'catatan' => $request->catatan 
+            ]);
+        return redirect('/produks')->with('status', 'Data Berhasil Diubah!');
     }
 
     /**

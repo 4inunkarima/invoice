@@ -18,7 +18,7 @@
                                 <strong>Tambahkan / Edit</strong>
                             </div>
                             <div class="card-body">
-                              <form method="POST" action="{{route('produks.store')}}">
+                              <form method="post" action="{{route('produks.store')}}">
                               @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -65,7 +65,7 @@
                                         <textarea class="form-control" id="catatan" name="catatan" rows="4"></textarea>
                                     </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-lg active my-3" aria-pressed="true">Save Change</button>
+                                    <button type="submit" class="btn btn-primary btn-lg active my-3" aria-pressed="true">Add Data</button>
                                 </form>
                                 <br/>
                                 
