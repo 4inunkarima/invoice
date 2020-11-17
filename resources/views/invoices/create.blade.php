@@ -27,9 +27,9 @@
                                 </form>
                                 <div class="media">
                                     <div class="media-body">
-                                        <h5 class="mt-0 mb-1 float-right">logo</h5>
+                                        <!-- <h5 class="mt-0 mb-1 float-right">logo</h5> -->
                                     </div>
-                                    <img src="" class="ml-3" alt="...">
+                                    <img src="https://www.limakode.com/wp-content/uploads/2020/03/5KODE1-small.png" class="ml-3" alt="...">
                                 </div>
                                 <div class="form-group col-mb-4">
                                     <label for="exampleFormControlTextarea1">Description</label>
@@ -75,8 +75,11 @@
                                             <h4>Pelanggan: </h4>
                                             <p>Nama: {{ $invoice->customer->nama }}<br>
                                             Alamat: {{ $invoice->customer->alamat }}<br>
-                                            Telephone: {{ $invoice->customer->telepon }} <br>
-                                            Email: {{ $invoice->customer->email }}
+                                            Kota: {{$invoice->customer->kota}}<br>
+                                            Kode Pos: {{$invoice->customer->kode_pos}}<br>
+                                            Telephone: {{ $invoice->customer->telepon }}<br>
+                                            Email: {{ $invoice->customer->email }}<br>
+                                            Organisasi: {{$invoice->customer->organisasi}}
                                             </p>
                                         
                                         </div>
@@ -84,11 +87,6 @@
                                         
                                             <label for="Address">Date</label>
                                             <input type="text" class="form-control" placeholder="Add Payment Date..">
-                                            <br/>
-                                            <!-- <form action="{{ route('invoice.update', ['id' => $invoice->id]) }}" method="post">
-                                                <label for="due_date">Batas Pembayaran</label>
-                                                <input type="date" class="form-control" id="due_date" name="due_date">  
-                                            </form> -->
                                             <br/>
                                             <label for="Address">Purchase Order Number</label>
                                             <input type="text" class="form-control" placeholder="Order Number">
@@ -144,11 +142,9 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    
-                                    <!-- MENAMPILKAN PRODUK YANG TELAH DITAMBAHKAN -->
                                     <tbody>
                                         @php $no = 1 @endphp
-                                        @foreach ($invoice->detail as $detail)
+                                        @forelse ($invoice->detail as $detail)
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $detail->produk->nama_produk }}</td>
@@ -156,14 +152,18 @@
                                             <td>Rp {{ number_format($detail->harga_produk) }}</td>
                                             <td>Rp {{ $detail->subtotal }}</td>
                                             <td>
-                                            <form action="{{ route('invoice.delete_produk', $detail->id) }}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="DELETE" class="form-control">
-                                                    <button class="btn btn-danger btn-sm">Hapus</button>
+                                            <form action="{{ route('invoice.hapus', $detail->id) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button class="btn btn-danger btn-sm">Hapus</button>
                                             </form>
-                                            </td>
+                                        </td>
                                         </tr>
-                                        @endforeach
+                                        @empty
+                                        <tr>
+                                            <td colspan="8" class="text-center">Tidak ada data</td>
+                                        </tr> 
+                                        @endforelse
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -185,7 +185,6 @@
                                             </td>
                                         </tr>
                                     </tfoot>
-                                    <!-- FORM UNTUK MEMILIH PRODUK YANG AKAN DITAMBAHKAN -->
                                 </table>
                                 </form>
                             </div>

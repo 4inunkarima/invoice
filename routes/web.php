@@ -42,7 +42,7 @@ Route::group(['prefix'=>'invoice'],function(){
     Route::get('/{id}','InvoiceController@edit')->name('invoice.create');
     // Route::get('/{$id}','InvoiceController@ubah')->name('invoice.edit');
     Route::put('/{id}','InvoiceController@update')->name('invoice.update');
-    Route::delete('/{id}','InvoiceController@deleteProduk')->name('invoice.delete_produk');
+    Route::delete('/{id}','InvoiceController@hapus')->name('invoice.hapus');
     Route::delete('/{id}/delete', 'InvoiceController@destroy')->name('invoice.destroy');
     Route::get('/{id}/print','InvoiceController@generateInvoice')->name('invoice.print');
 });

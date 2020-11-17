@@ -162,11 +162,11 @@ class InvoiceController extends AppBaseController
             }
         }    
 
-    public function deleteProduk($id)
+    public function hapus($id)
     {
         $detail=Invoice_detail::find($id);
         $detail->delete();
-        return redirect()->back()->with(['succes'=>'Produk berhasil dihapus.']);
+        return redirect()->back()->with(['success'=>'Produk berhasil dihapus.']);
     }
 
     /**
