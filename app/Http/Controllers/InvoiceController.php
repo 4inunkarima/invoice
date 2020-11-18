@@ -39,12 +39,6 @@ class InvoiceController extends AppBaseController
         return view('invoices.index', compact('invoice'));
     }
 
-    // public function show (Request $request)
-    // {
-    //     $invoice = Invoice::with(['customer','detail','detail.produk'])->find($id);
-    //     $produks = Produk::orderBy('nama_produk','ASC')->get();
-    //     return view('invoices.show',compact('invoice','produks'));
-    // }
     /**
      * Show the form for creating a new Invoice.
      *
@@ -164,7 +158,7 @@ class InvoiceController extends AppBaseController
 
     public function hapus($id)
     {
-        $detail=Invoice_detail::find($id);
+        $detail=Invoice_detail::find($id)->first();
         $detail->delete();
         return redirect()->back()->with(['success'=>'Produk berhasil dihapus.']);
     }

@@ -23,25 +23,25 @@
                              Invoices
                              <a class="pull-right" href="{{ route('invoice.select') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Invoice ID</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>No Telp</th>
-                                    <th>Total Item</th>
-                                    <th>Tanggal dan Waktu</th>
+                                    <th scope="col">Invoice ID</th>
+                                    <th scope="col">Nama Lengkap</th>
+                                    <th scope="col">No Telp</th>
+                                    <th scope="col">Total Item</th>
+                                    <th scope="col">Tanggal dan Waktu</th>
                                     <!-- <th>Batas Pembayaran</th> -->
-                                    <th>Subtotal</th>
-                                    <th>Pajak</th>
-                                    <th>Total</th>
-                                    <th>Aksi</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col">Pajak</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($invoice as $row)
                                     <tr>
-                                        <td><strong>#{{ $row->id }}</strong></td>
+                                        <td scpope="row"><strong>#{{ $row->id }}</strong></td>
                                         <td>{{ $row->customer->nama }}</td>
                                         <td>{{ $row->customer->telepon }}</td>
                                         <td><span class="badge badge-success">{{ $row->detail->count() }} Item</span></td>
@@ -54,7 +54,7 @@
                                             <form action="{{ route('invoice.destroy', $row->id) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <a href="{{ route('invoice.print', $row->id) }}" class="btn btn-secondary btn-sm">Print</a>
+                                                <a href="{{ route('invoice.print', $row->id) }}" class="btn btn-primary btn-sm">Print</a>
                                                 <a href="{{ route('invoice.update', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                                 <button class="btn btn-danger btn-sm">Hapus</button>
                                             </form>

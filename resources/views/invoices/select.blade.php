@@ -22,7 +22,7 @@
                                 <select name="customer_id" class="form-control" required>
                                     <option value="">Pilih</option>
                                     @foreach ($customers as $customer) 
-                                    <option value="{{ $customer->id }}">{{ $customer->nama }} - {{ $customer->email }}</option>
+                                    <option value="{{ $customer->id }}">{{ $customer->nama }} - {{ $customer->email }} - {{$customer->alamat}}</option>
                                     @endforeach
                                 </select>
                             </div>

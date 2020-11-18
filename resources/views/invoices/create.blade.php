@@ -131,32 +131,28 @@
                             <div class="col-md-12 mt-3">
                                 <form action="{{ route('invoice.update', ['id' => $invoice->id]) }}" method="post">
                                 @csrf
-                                <table class="table table-hover table-bordered">
+                                <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <td>#</td>
-                                            <td>Produk</td>
-                                            <td>Qty</td>
-                                            <td>Harga</td>
-                                            <td>Subtotal</td>
-                                            <th>Action</th>
+                                            <th scope="col">#</td>
+                                            <th scope="col">Produk</td>
+                                            <th scope="col">Qty</td>
+                                            <th scope="col">Harga</td>
+                                            <th scope="col">Subtotal</td>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php $no = 1 @endphp
                                         @forelse ($invoice->detail as $detail)
                                         <tr>
-                                            <td>{{ $no++ }}</td>
+                                            <td scope="row">{{ $no++ }}</td>
                                             <td>{{ $detail->produk->nama_produk }}</td>
                                             <td>{{ $detail->qty }}</td>
                                             <td>Rp {{ number_format($detail->harga_produk) }}</td>
                                             <td>Rp {{ $detail->subtotal }}</td>
                                             <td>
-                                            <form action="{{ route('invoice.hapus', $detail->id) }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                            </form>
+                                            <a href = "{{ route('invoice.hapus', $detail->id) }}" class="btn btn-danger">Hapus</a>
                                         </td>
                                         </tr>
                                         @empty
@@ -178,7 +174,7 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="number" min="1" value="1" name="qty" class="form-control" required>
+                                                <input type="number" min="1" value="1" name="qty" class="form-control">
                                             </td>
                                             <td colspan="3">
                                                 <button class="btn btn-primary btn-sm">Tambahkan</button>
@@ -190,24 +186,6 @@
                             </div>
                             </div>
                             <br/>
-                                <!-- <form>
-                                    <div class="row">
-                                        <div class="col-md-12"> 
-                                            <div class="form-group"> 
-                                            <label for="Address">Invoice Note</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add note.." rows="4"></textarea> 
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-                                                    <label class="form-check-label" for="disabledFieldsetCheck">
-                                                    Data filled correctly
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form> -->
                                 <div class="form-group">
                                     <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">Kembali</a>
                                 </div>
