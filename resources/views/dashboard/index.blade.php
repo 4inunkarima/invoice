@@ -19,7 +19,7 @@
 								<div class="card-body">
 									<h3>Lunas</h3>
 									<hr>
-									<p> {{$showLunas}} </p>
+									<p> {{ $showLunas }} </p>
 								</div>
 							</div>
 						</div>
@@ -32,24 +32,31 @@
 								</div>
 							</div>
 						</div>
-						<div class="container">
+						<div class="container col-md-10">
 						<canvas id="customers"></canvas>
 						</div>
 						<script>
 							let customers = document.getElementById('customers').getContext('2d');
+							Chart.defaults.global.defaultFontFamily = 'Geometr706 BlkCn BT';
+							Chart.defaults.global.defaultFontSize = 15;
+							Chart.defaults.global.defaultFontColor = 'black';
 							let massPopChart = new Chart(customers, {
-								type: 'bar',
+								type: 'doughnut',
 								data:{
-									labels:['Januari', 'Februari', 'Maret', 'April', 'Mei'],
+									labels:['Customer', 'Invoice', 'Lunas'],
 								datasets:[{
-									label:'Total Customer',
-									data:[
-										10,
-										20,
-										30,
-										40,
-										50
-									]
+									label:'Diagram Peningkatan',
+									data:[{!! json_encode($showCustomer) !!}, {!! json_encode($showInvoice) !!}, {!! json_encode($showLunas) !!}
+									],
+									backgroundColor:[
+										'rgba(255, 99, 132, 0.6)',
+										'rgba(54, 162, 235, 0.6)',
+										'rgba(255, 206, 86, 0.6)',
+									],
+									borderWidth:1,
+									borderColor:'grey',
+									hoverBorderWidth:3,
+									hoverBorderColor:'#000'
 								}]
 								}
 							}
