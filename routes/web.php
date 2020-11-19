@@ -46,3 +46,5 @@ Route::group(['prefix'=>'invoice'],function(){
     Route::delete('/{id}/delete', 'InvoiceController@destroy')->name('invoice.destroy');
     Route::get('/{id}/print','InvoiceController@generateInvoice')->name('invoice.print');
 });
+
+Route::resource('statusPembayarans', 'status_pembayaranController');

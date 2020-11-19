@@ -20,7 +20,7 @@
                         @endif
                         <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Invoices
+                             Invoice
                              <a class="pull-right" href="{{ route('invoice.select') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
                         <table class="table table-hover">
