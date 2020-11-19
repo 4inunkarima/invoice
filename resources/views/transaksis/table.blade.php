@@ -20,11 +20,10 @@
             <td>{{ $transaksi->tanggal_transaksi }}</td>
                 <td>
                     {!! Form::open(['route' => ['transaksis.destroy', $transaksi->id], 'method' => 'delete']) !!}
-                    <div class=''>
-                        <a href="{{ route('transaksis.show', [$transaksi->id]) }}" class="btn btn-primary btn-sm">Belum</a>
-                        <a href="{{ route('transaksis.edit', [$transaksi->id]) }}" class="btn btn-secondary btn-sm">Kredit</a>
-                        <button class="btn btn-danger btn-sm">Lunas</button>
-                        <!-- {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!} -->
+                    <div class='btn-group'>
+                        <a href="{{ route('transaksis.show', [$transaksi->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
+                        <a href="{{ route('transaksis.edit', [$transaksi->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
+                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>
