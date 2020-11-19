@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddHargaProdukToProduks extends Migration
+class CreateStatusPembayaransTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,8 +14,11 @@ class AddHargaProdukToProduks extends Migration
      */
     public function up()
     {
-        Schema::table('produks', function (Blueprint $table) {
-            $table->integer('harga_produk');
+        Schema::create('status_pembayarans', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nama_status');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +29,6 @@ class AddHargaProdukToProduks extends Migration
      */
     public function down()
     {
-        Schema::table('produks', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('status_pembayarans');
     }
 }
