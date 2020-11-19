@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Invoice_detail;
-use App\Invoice;
+use App\Models\Invoice_detail;
+use App\Models\Invoice;
 
 class Invoice_detailObserver
 {

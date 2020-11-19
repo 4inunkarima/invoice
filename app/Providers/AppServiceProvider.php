@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Invoice_detail;
+use App\Models\Invoice_detail;
 use App\Observers\Invoice_detailObserver;
 
 class AppServiceProvider extends ServiceProvider

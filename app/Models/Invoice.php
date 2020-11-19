@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Invoice;
 
 /**
  * Class Invoice
@@ -58,5 +59,24 @@ class Invoice extends Model
         
     ];
 
+    public function getTaxAttribute()
+    {
+        return ($this->total*2)/100;
+    }
+
+    public function getTotalHargaAttribute()
+    {
+        return($this->total+(($this->total*2)/100));
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function detail()
+    {
+        return $this->hasMany(Invoice_detail::class);
+    }
     
 }

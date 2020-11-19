@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Produk;
+use App\Http\Requests\CreateProdukRequest;
+use App\Http\Requests\UpdateProdukRequest;
+use App\Repositories\ProdukRepository;
+use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Produk;
+use PDF;
+use Flash;
+use Response;
 
 class ProdukController extends Controller
 {

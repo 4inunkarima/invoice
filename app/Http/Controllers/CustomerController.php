@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateCustomerRequest;
 use App\Repositories\CustomerRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use App\Customer;
+use App\Models\Customer;
 use Flash;
 use Response;
 
