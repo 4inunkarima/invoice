@@ -16,7 +16,7 @@ class AddRelationshipToTransaksisTable extends Migration
         Schema::table('transaksis', function (Blueprint $table) {
             $table->foreign('kode_invoice')
                 ->references('id')->on('invoices')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             // $table->foreign('nama_customer')
             //     ->references('id')->on('customer')
             // //     ->onDelete('cascade');
@@ -25,7 +25,7 @@ class AddRelationshipToTransaksisTable extends Migration
             //     ->onDelete('cascade');
             $table->foreign('kode_pembayaran')
                 ->references('id')->on('status_pembayarans')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
         });
     }
 
@@ -40,7 +40,7 @@ class AddRelationshipToTransaksisTable extends Migration
             $table->dropForeign('transaksis_kode_invoice_foreign');
             // $table->dropForeign('transaksis_nama_customer_foreign');
             // $table->dropForeign('transaksis_total_harga_foreign');
-            $table->dropForeign('transaksis_status_pembayaran');
+            $table->dropForeign('transaksis_kode_pembayaran_foreign');
         });
     }
 }

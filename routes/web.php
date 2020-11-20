@@ -48,3 +48,8 @@ Route::group(['prefix'=>'invoice'],function(){
 });
 
 Route::resource('statusPembayarans', 'status_pembayaranController');
+
+//route untuk transaksi
+Route::get('/show','TransaksiController@index')->name('transaksi.index');
+Route::get('/add','TransaksiController@add')->name('transaksi.add');
+Route::post('/add','TransaksiController@store')->name('transaksi.store');

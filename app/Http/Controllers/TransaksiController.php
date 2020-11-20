@@ -7,6 +7,12 @@ use App\Http\Requests\UpdateTransaksiRequest;
 use App\Repositories\TransaksiRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use App\Models\Invoice;
+use App\Models\Invoice_detail;
+use App\Models\Customer;
+use App\Models\Produk;
+use App\Models\status_pembayaran;
+use App\Models\Transaksi;
 use Flash;
 use Response;
 
@@ -29,10 +35,11 @@ class TransaksiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $transaksis = $this->transaksiRepository->all();
-
-        return view('transaksis.index')
-            ->with('transaksis', $transaksis);
+        $transaksi  = Transaksi::with(['customer', 'detail'])->orderBy('id', 'ASC')->paginate(10);
+        return view('transaksis.index', compact('transaksi'));
+        // $transaksis = $this->transaksiRepository->all();
+        // return view('transaksis.index')
+        //     ->with('transaksis', $transaksis);
     }
 
     /**
@@ -40,9 +47,13 @@ class TransaksiController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function add()
     {
-        return view('transaksis.create');
+        $title = 'Pembayaran';
+        $kode_invoice = Invoice::orderBy('id','asc')->get();
+        $kode_pembayaran = Status_pembayaran::orderBy('nama_status','asc')->get();
+
+        return view('transaksis.create',compact('title','kode_invoice','kode_pembayaran'));
     }
 
     /**
@@ -52,15 +63,26 @@ class TransaksiController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateTransaksiRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
+        $this->validate($request,[
+            'kode_invoice'=>'required',
+            'kode_pembayaran'=>'required',
+            'deskripsi_transaksi'=>'required',
+            'batas_pambayaran'=>'required'
+        ]);
 
-        $transaksi = $this->transaksiRepository->create($input);
+        $data['id']=\Uuid::generate(4);
+        $data['kode_invoice']='request'->kode_invoice;
+        $data['kode_pembayaran']='request'->kode_pembayaran;
+        $data['deskripsi_transaksi']='request'->deskripsi_transaksi;
+        $data['batas_pembayaran']='request'->batas_pembayaran;
+        $data['created_at']=date('Y-m-d H:i:s');
+        $date['update_at']=date('Y-m-d H:i:s');
 
-        Flash::success('Transaksi saved successfully.');
-
-        return redirect(route('transaksis.index'));
+        Transaksi::insert($data);
+        \Session::flash('sukses','Transaksi berhasil ditambah');
+        return redirect('/create');
     }
 
     /**

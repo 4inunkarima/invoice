@@ -18,11 +18,7 @@
                               <strong>Edit Transaksi</strong>
                           </div>
                           <div class="card-body">
-                              {!! Form::model($transaksi, ['route' => ['transaksis.update', $transaksi->id], 'method' => 'patch']) !!}
 
-                              @include('transaksis.fields')
-
-                              {!! Form::close() !!}
                             </div>
                         </div>
                     </div>

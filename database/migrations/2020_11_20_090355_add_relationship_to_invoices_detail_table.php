@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddRelationshipToInvoicesDetailTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('invoices_detail', function (Blueprint $table) {
+            $table->foreign('invoice_id')
+                ->references('id')->on('invoices')
+                ->onDelete('cascade');
+                $table->foreign('produk_id')
+                ->references('id')->on('produks')
+                ->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('invoices_detail', function (Blueprint $table) {
+            $table->dropForeign('transaksis_invoice_id_foreign');
+            $table->dropForeign('transaksis_produk_id_foreign');
+        });
+    }
+}

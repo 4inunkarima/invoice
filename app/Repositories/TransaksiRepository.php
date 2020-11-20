@@ -17,11 +17,10 @@ class TransaksiRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'kode_transaksi',
-        'nama_customer',
-        'jumlah_transaksi',
         'kode_invoice',
-        'tanggal_transaksi'
+        'kode_pembayaran',
+        'deskripsi_transaksi',
+        'batas_pembayaran'
     ];
 
     /**
