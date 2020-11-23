@@ -65,13 +65,11 @@
                                         <textarea class="form-control" name="catatan" id="catatan" rows="4"></textarea>
                                     </div>
                                     </div>
+                                    <br/>
                                     <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true">Save</button>
                                     <a href="{{ route('produks.index') }}" class="btn btn-secondary">Cancel</a>
                                 </form>
-                                <br/>
-                                
-                            </div>
-                            
+                            </div>                            
                         </div>
                     </div>
                 </div>

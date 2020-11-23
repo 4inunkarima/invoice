@@ -1,21 +1,22 @@
-<div class="col-lg-12">
-    <div class="card">
-        <div class="card-header">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
                 <i class="fa fa-plus-square-o fa-lg"></i>
-                <strong>Basic Information</strong>
+                    <strong>Basic Information</strong>
                         </div>
                             <div class="card-body">
-                                <div class="media">
+                                <!-- <div class="media">
                                     <img src="views/customers/prof.png" class="mr-3" alt="prof">
                                     <div class="media-body">
                                     <select id="inputState" class="form-control col-md-4">
-                                            <option selected>Choose...</option>
+                                            <option selected>Pilih...</option>
                                             <option>Individu</option>
                                             <option>Organisation</option>
                                         </select>
                                     </div>
                                 </div>
-                                <hr />
+                                <hr /> -->
                                 <form>
                                     <div class="row">
                                         <div class="col-md-3">
@@ -123,3 +124,4 @@
                     </div>
                 </div>
             </div>
+        </div>    

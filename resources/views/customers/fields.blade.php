@@ -6,17 +6,17 @@
                                 <strong>Basic Information</strong>
                             </div>
                             <div class="card-body">
-                                <div class="media">
+                                <!-- <div class="media">
                                     <img src="views/customers/prof.png" class="mr-3" alt="prof">
                                     <div class="media-body">
                                     <select id="inputState" class="form-control col-md-4">
-                                            <option selected>Choose...</option>
+                                            <option selected>Pilih...</option>
                                             <option>Individu</option>
                                             <option>Organisation</option>
                                         </select>
                                     </div>
                                 </div>
-                                <hr />
+                                <hr /> -->
                                 <form>
                                     <div class="row">
                                         <div class="col-md-3">
@@ -36,14 +36,14 @@
                                         <div class="col">
                                         <label for="mata_uang">Mata Uang</label>
                                         <select id="inputState" name="mata_uang"  class="form-control">
-                                            <option selected>Choose..</option>
+                                            <option selected>Pilih..</option>
                                             <option>IDR</option>
                                             <option>USD</option>
                                         </select>
                                         <br/>
                                         <label for="bahasa">Bahasa</label>
                                         <select id="inputState" name="bahasa" class="form-control">
-                                            <option selected>Choose..</option>
+                                            <option selected>Pilih..</option>
                                             <option>English</option>
                                             <option>Indonesia</option>
                                         </select> 
@@ -82,7 +82,7 @@
                                         <br/>
                                         <label for="negara">Negara</label>
                                         <select id="inputState" name="negara" class="form-control">
-                                            <option selected>Choose..</option>
+                                            <option selected>Pilih..</option>
                                             <option>Indonesia</option>
                                             <option>Brunei Darussalam</option>
                                             <option>Kamboja</option>
@@ -113,8 +113,8 @@
                                             <label for="gender">Gender</label>
                                             <select id="inputState" name="gender" class="form-control">
                                                 <option selected>Choose...</option>
-                                                <option>Male</option>
-                                                <option>Female</option>
+                                                <option>Laki-laki</option>
+                                                <option>Perempuan</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6">
@@ -122,7 +122,7 @@
                                             <input type="text" name="fax_number" class="form-control" placeholder="Fax Number">
                                             <br/>
                                             <label for="note">Note</label>
-                                            <input class="form-control" name="note" id="exampleFormControlTextarea1" rows="4">
+                                            <input class="form-control" name="note" id="exampleFormControlTextarea1" rows="4" placeholder="Note">
                                         </div>
                                     </div>
                                 <hr />
@@ -144,3 +144,4 @@
                     </div>
                 </div>
             </div>
+        </div>
