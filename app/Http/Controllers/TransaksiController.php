@@ -13,6 +13,7 @@ use App\Models\Customer;
 use App\Models\Produk;
 use App\Models\status_pembayaran;
 use App\Models\Transaksi;
+// use Uuid;
 use Flash;
 use Response;
 
@@ -35,11 +36,8 @@ class TransaksiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $transaksi  = Transaksi::with(['customer', 'detail'])->orderBy('id', 'ASC')->paginate(10);
+        $transaksi  = Transaksi::with(['tampil', 'pembayarans'])->orderBy('id', 'ASC')->paginate(10);
         return view('transaksis.index', compact('transaksi'));
-        // $transaksis = $this->transaksiRepository->all();
-        // return view('transaksis.index')
-        //     ->with('transaksis', $transaksis);
     }
 
     /**
@@ -49,7 +47,7 @@ class TransaksiController extends AppBaseController
      */
     public function add()
     {
-        $title = 'Pembayaran';
+        // $title = 'Pembayaran';
         $kode_invoice = Invoice::orderBy('id','asc')->get();
         $kode_pembayaran = Status_pembayaran::orderBy('nama_status','asc')->get();
 
@@ -69,20 +67,21 @@ class TransaksiController extends AppBaseController
             'kode_invoice'=>'required',
             'kode_pembayaran'=>'required',
             'deskripsi_transaksi'=>'required',
-            'batas_pambayaran'=>'required'
+            // 'batas_pambayaran'=>'required'
         ]);
 
-        $data['id']=\Uuid::generate(4);
-        $data['kode_invoice']='request'->kode_invoice;
-        $data['kode_pembayaran']='request'->kode_pembayaran;
-        $data['deskripsi_transaksi']='request'->deskripsi_transaksi;
-        $data['batas_pembayaran']='request'->batas_pembayaran;
-        $data['created_at']=date('Y-m-d H:i:s');
-        $date['update_at']=date('Y-m-d H:i:s');
+        // $data['id']=\Uuid::generate(4);
+        // $data['kode_invoice']='request'->kode_invoice;
+        // $data['kode_pembayaran']='request'->kode_pembayaran;
+        // $data['deskripsi_transaksi']='request'->deskripsi_transaksi;
+        // $data['batas_pembayaran']='request'->batas_pembayaran;
+        // $data['created_at']=date('Y-m-d H:i:s');
+        // $date['update_at']=date('Y-m-d H:i:s');
 
-        Transaksi::insert($data);
+        Transaksi::create($request->all());
+        // Transaksi::insert($data);
         \Session::flash('sukses','Transaksi berhasil ditambah');
-        return redirect('/create');
+        return redirect('/add');
     }
 
     /**

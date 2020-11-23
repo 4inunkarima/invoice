@@ -9,15 +9,46 @@ use App\Models\Transaksi;
 class Transaksi extends Model
 {
     protected $table ='transaksis';
+    protected $guarded=[];
     public $incrementing = false;
 
-    public function kode_invoices()
+    public $fillable = [
+        'kode_invoice',
+        'kode_pembayaran',
+        'deskripsi_transaksi',
+        'batas_pembayaran'
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'kode_invoice' => 'integer',
+        'kode_pembayaran' => 'integer',
+        'batas_pembayaran' => 'date',
+        'deskripsi_transaksi' => 'string'
+    ];
+
+    public function tampil()
     {
-        return $this->belongsTo('App\Models\Invoice','kode_invoice','id');
+        return $this->belongsTo(Invoice::class);
     }
 
-    public function kode_pembayarans()
+    public function pembayarans()
     {
-        return $this->belongsTo('App\Models\status_pembayaran','kode_pembayarans','id');
+        return $this->belongsTo(status_pembayaran::class);
     }
+
+    // public function customer()
+    // {
+    //     return $this->belongsTo(Customer::class);
+    // }
+
+    // public function detail()
+    // {
+    //     return $this->hasMany(Invoice_detail::class);
+    // }
 }

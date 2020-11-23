@@ -29,16 +29,34 @@
                                     <th scope="col">Invoice ID</th>
                                     <th scope="col">Nama Lengkap</th>
                                     <th scope="col">No Telp</th>
-                                    <!-- <th scope="col">Total Item</th> -->
-                                    <th scope="col">Tanggal dan Waktu</th>
+                                    <th scope="col">Deskripsi Transaksi</th>
                                     <th scope="col">Batas Pembayaran</th>
                                     <th scope="col">Status Pembayaran</th>
-                                    <!-- <th scope="col">Pajak</th> -->
-                                    <!-- <th scope="col">Total</th> -->
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @forelse ($transaksi as $tamp)
+                                    <tr>
+                                        <td scpope="row"><strong>#{{ $tamp->kode_invoice }}</strong></td>
+                                        <td>{{ $tamp->batas_pembayaran->format('D, d M Y')}}</td>
+                                        <td>{{ $tamp->pembayarans->nama_status}}</td>
+                                        <td>{{ $tamp->deskripsi_transaksi}}</td>
+                                        <td>{{ number_format($tamp->tampil->total)}}</td>
+                                        <td>
+                                            <form action="{{ route('invoice.destroy', $tamp->id) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <a href="{{ route('invoice.update', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                <button class="btn btn-danger btn-sm">Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="8" class="text-center">Tidak ada data</td>
+                                    </tr> 
+                                @endforelse
                             </tbody>
                         </table>
 

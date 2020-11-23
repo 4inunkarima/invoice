@@ -17,6 +17,8 @@ class status_pembayaran extends Model
     use SoftDeletes;
 
     public $table = 'status_pembayarans';
+
+    protected $guarded = [];
     
 
     protected $dates = ['deleted_at'];
