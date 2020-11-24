@@ -31,7 +31,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($produk as $produk)
+                                    @foreach($produks as $produk)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $produk->nama_produk }}</td>
@@ -52,6 +52,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                {{ $produks->links() }}
                             </div>
 
                          </div>

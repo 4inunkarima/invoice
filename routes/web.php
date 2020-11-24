@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-// Route::get('/home', 'HomeController@index')->middleware('verified');
+ Route::get('/dashboard', 'DashboardController@index')->middleware('verified');
 
 Route::resource('dashboard', 'DashboardController')->middleware('verified');
 
@@ -53,3 +53,6 @@ Route::resource('statusPembayarans', 'status_pembayaranController');
 Route::post('/show','TransaksiController@index')->name('transaksi.index');
 Route::get('/add','TransaksiController@add')->name('transaksi.add');
 Route::post('/add','TransaksiController@store')->name('transaksi.store');
+
+
+Route::resource('items', 'ItemController');

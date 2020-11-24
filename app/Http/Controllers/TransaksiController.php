@@ -47,7 +47,7 @@ class TransaksiController extends AppBaseController
      */
     public function add()
     {
-        // $title = 'Pembayaran';
+        $title = 'Pembayaran';
         $kode_invoice = Invoice::orderBy('id','asc')->get();
         $kode_pembayaran = Status_pembayaran::orderBy('nama_status','asc')->get();
 

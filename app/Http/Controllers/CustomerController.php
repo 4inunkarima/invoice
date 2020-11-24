@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use Flash;
 use Response;
+use App\DataTables\CustomerDataTable;
 
 class CustomerController extends AppBaseController
 {
@@ -28,13 +29,12 @@ class CustomerController extends AppBaseController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(CustomerDataTable $customerDataTable)
     {
-        $customers = $this->customerRepository->all();
-
-        return view('customers.index')
-            ->with('customers', $customers);
+        // dd($customerDataTable->ajax());
+        return $customerDataTable->render('customers.index');
     }
+
 
     /**
      * Show the form for creating a new Customer.

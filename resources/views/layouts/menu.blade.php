@@ -40,4 +40,9 @@
         <span>Report</span>
     </a>
 </li>
-
+<li class="nav-item {{ Request::is('items*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('items.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Items</span>
+    </a>
+</li>
