@@ -8,7 +8,7 @@
     .invoice-box {
         max-width: 800px;
         margin: auto;
-        padding: 30px;
+        padding: 20px;
         border: 1px solid #eee;
         box-shadow: 0 0 10px rgba(0, 0, 0, .15);
         font-size: 16px;
@@ -29,6 +29,7 @@
     }
     
     .invoice-box table tr td:nth-child(2) {
+       float: right;
         text-align: right;
     }
     
@@ -90,11 +91,11 @@
     }
     
     .rtl table {
-        text-align: right;
+        text-align: center;
     }
     
     .rtl table tr td:nth-child(2) {
-        text-align: left;
+        text-align: center;
     }
     </style>
 </head>
@@ -102,15 +103,15 @@
 <body>
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
-            <tr class="top">
-                <td colspan="2">
+            <tr class="top justify">
+                <td colspan="6">
                     <table>
                         <tr>
                             <td class="title">
                                 <img src="https://www.limakode.com/wp-content/uploads/2020/03/5KODE1-small.png" width="150px">
                             </td>
                             
-                            <td>
+                            <td class="float-right">
                                 Invoice : <strong>#{{ $invoice->id }}</strong><br>
                                 {{ $invoice->created_at }}<br>
                             </td>
@@ -118,9 +119,10 @@
                     </table>
                 </td>
             </tr>
+
             
             <tr class="information">
-                <td colspan="2">
+                <td colspan="6">
                     <table>
                         <tr>
                             <td>
@@ -134,7 +136,7 @@
                                 Organisasi: {{$invoice->customer->organisasi}}
                             </td>
                             
-                            <td>
+                            <td float-right>
                                 <strong>PENGIRIM</strong><br>
                                 Daengweb<br>
                                 085343966997<br>
@@ -146,33 +148,56 @@
                     </table>
                 </td>
             </tr>
-            
-            <tr class="heading">
-                <td>Produk</td>
-                <td>Subtotal</td>
-            </tr>
-            
-            @foreach ($invoice->detail as $row)
-            <tr class="item">
-                <td>
-                    {{ $row->produk->nama_produk }}<br>
-                    <strong>Harga</strong>: Rp {{ number_format($row->harga_produk) }} x {{ $row->qty }}
+
+            <tr class="top justify heading">
+                <td colspan="6">
+                    <table>
+                    <thead class="thead-dark">
+                        <tr class="heading">
+                        <th scope="col-md-1">#</th>
+                        <th scope="col-md-3">Deskripsi</th>
+                        <th scope="col-md-2">Satuan</th>
+                        <th scope="col-md-2">Harga</th>
+                        <th scope="col-md-2">Jumlah</th>
+                        </tr>
+                    </thead>
                 </td>
-                <td>Rp {{ number_format($row->harga_produk * $row->qty) }}</td>
             </tr>
-            @endforeach
-            
+            <tr class="top justify">
+                <td colspan="6">
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                    @foreach ($invoice->detail as $row)
+                    <tr class="item">
+                        <td>
+                            {{ $row->produk->nama_produk }}<br>
+                            <strong>Harga</strong>: Rp {{ number_format($row->harga_produk) }} x {{ $row->qty }}
+                        </td>
+                        <td>Rp {{ number_format($row->harga_produk * $row->qty) }}</td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </td>
+            </tr>
+        </table>
+
+        <table cellpadding="0" cellspacing="0">
             <tr>
-                <th colspan="3">Subtotal</th>
+                <th colspan="6">Subtotal</th>
                 <td>Rp {{ number_format($invoice->total) }}</td>
             </tr>
             <tr>
-                <th colspan="3">Pajak</th>
+                <th colspan="6">Pajak</th>
                 <td>2%</td>
                 <td>Rp {{ number_format($invoice->tax) }}</td>
             </tr>
             <tr>
-                <th colspan="3">Total</th>
+                <th colspan="6">Total</th>
                 <td>Rp {{ number_format($invoice->total_harga) }}</td>
             </tr>
         </table>
