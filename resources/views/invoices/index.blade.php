@@ -54,7 +54,7 @@
                                             <form action="{{ route('invoice.destroy', $row->id) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <a href="{{ route('invoice.print', $row->id) }}" class="btn btn-primary btn-sm">Print</a>
+                                                <a href="{{ route('invoice.print', $row->id) }}" class="btn btn-primary btn-sm" target="_blank">Print</a>
                                                 <a href="{{ route('invoice.update', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                                 <button class="btn btn-danger btn-sm">Hapus</button>
                                             </form>

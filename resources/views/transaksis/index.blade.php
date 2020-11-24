@@ -27,11 +27,12 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Invoice ID</th>
-                                    <th scope="col">Nama Lengkap</th>
-                                    <th scope="col">No Telp</th>
-                                    <th scope="col">Deskripsi Transaksi</th>
+                                    <!-- <th scope="col">Nama Lengkap</th> -->
+                                    <!-- <th scope="col">No Telp</th> -->
                                     <th scope="col">Batas Pembayaran</th>
                                     <th scope="col">Status Pembayaran</th>
+                                    <th scope="col">Deskripsi Transaksi</th>
+                                    <th scope="col">Ubah Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -40,14 +41,19 @@
                                     <tr>
                                         <td scpope="row"><strong>#{{ $tamp->kode_invoice }}</strong></td>
                                         <td>{{ $tamp->batas_pembayaran->format('D, d M Y')}}</td>
-                                        <td>{{ $tamp->pembayarans->nama_status}}</td>
-                                        <td>{{ $tamp->deskripsi_transaksi}}</td>
-                                        <td>{{ number_format($tamp->tampil->total)}}</td>
+                                        <td>{{ $tamp->pembayarans->nama_status }}</td>
+                                        <td>{{ $tamp->deskripsi_transaksi }}</td>
+                                        
                                         <td>
-                                            <form action="{{ route('invoice.destroy', $tamp->id) }}" method="POST">
+                                            <div style="width:60px">
+                                            <a href="{{ url('naik-status/'.$tamp->id) }}" class="btn btn-primary btn-sm" id="edit"><i class="fa fa-pencil-square-o"></i>Naik Status</a>
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <form action="{{ route('transaksi.destroy', $tamp->id) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <a href="{{ route('invoice.update', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                                 <button class="btn btn-danger btn-sm">Hapus</button>
                                             </form>
                                         </td>

@@ -17,6 +17,7 @@ class CreateStatusPembayaransTable extends Migration
         Schema::create('status_pembayarans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_status');
+            $table->integer('urutan');
             $table->timestamps();
             $table->softDeletes();
         });

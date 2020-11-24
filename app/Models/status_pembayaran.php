@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\status_pembayaran;
 
 /**
  * Class status_pembayaran
@@ -18,7 +19,6 @@ class status_pembayaran extends Model
 
     public $table = 'status_pembayarans';
 
-    protected $guarded = [];
     
 
     protected $dates = ['deleted_at'];
@@ -26,7 +26,8 @@ class status_pembayaran extends Model
 
 
     public $fillable = [
-        'nama_status'
+        'nama_status',
+        'urutan'
     ];
 
     /**
@@ -36,7 +37,8 @@ class status_pembayaran extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nama_status' => 'string'
+        'nama_status' => 'string',
+        'urutan'=>'integer'
     ];
 
     /**
@@ -48,5 +50,9 @@ class status_pembayaran extends Model
         
     ];
 
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class);
+    }
     
 }

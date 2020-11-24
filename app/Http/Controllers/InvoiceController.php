@@ -182,6 +182,6 @@ class InvoiceController extends AppBaseController
     {
         $invoice=Invoice::with(['customer','detail','detail.produk'])->find($id);
         $pdf=PDF::loadview('invoices.print',compact('invoice'))->setPaper('a4','landscape');
-        return $pdf->stream();
+        return $pdf->stream('my.pdf',array('Attachment'=>0));
     }
 }

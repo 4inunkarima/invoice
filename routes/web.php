@@ -53,6 +53,12 @@ Route::resource('statusPembayarans', 'status_pembayaranController');
 Route::post('/show','TransaksiController@index')->name('transaksi.index');
 Route::get('/add','TransaksiController@add')->name('transaksi.add');
 Route::post('/add','TransaksiController@store')->name('transaksi.store');
-
+Route::delete('/{id}/delete', 'TransaksiController@destroy')->name('transaksi.destroy');
+Route::get('/{id}','TransaksiController@edit')->name('transaksi.edit');
+Route::put('/{id}','TransaksiController@update')->name('transaksi.update');
+// Route::put('/{id}','TransaksiController@show')->name('transaksi.show');
+// Route::delete('/{id}','TransaksiController@delete')->name('transaksi.delete');
+Route::get('naik-status/{id}','TransaksiController@naik_status');
 
 Route::resource('items', 'ItemController');
+

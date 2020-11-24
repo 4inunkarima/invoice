@@ -52,7 +52,7 @@
      
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ route('transaksi.index') }}" class="btn btn-primary">Kembali</a>
+                    <!-- <a href="{{ route('transaksi.index') }}" class="btn btn-primary">Kembali</a> -->
                   </div>
                 </form>
 

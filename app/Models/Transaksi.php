@@ -10,9 +10,11 @@ class Transaksi extends Model
 {
     protected $table ='transaksis';
     protected $guarded=[];
+    protected $primaryKey = 'id';
     public $incrementing = false;
 
     public $fillable = [
+        'id',
         'kode_invoice',
         'kode_pembayaran',
         'deskripsi_transaksi',
@@ -32,23 +34,14 @@ class Transaksi extends Model
         'deskripsi_transaksi' => 'string'
     ];
 
-    public function tampil()
+    public function totalins()
     {
-        return $this->belongsTo(Invoice::class);
+        return $this->belongsTo('App\Models\Invoice','kode_invoice','id');
     }
 
     public function pembayarans()
     {
-        return $this->belongsTo(status_pembayaran::class);
+        return $this->belongsTo('App\Models\status_pembayaran','kode_pembayaran','id');
     }
 
-    // public function customer()
-    // {
-    //     return $this->belongsTo(Customer::class);
-    // }
-
-    // public function detail()
-    // {
-    //     return $this->hasMany(Invoice_detail::class);
-    // }
 }

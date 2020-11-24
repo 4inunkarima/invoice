@@ -4,6 +4,11 @@
     <p>{{ $statusPembayaran->nama_status }}</p>
 </div>
 
+<div class="form-group">
+    {!! Form::label('urutan', 'Urutan:') !!}
+    <p>{{ $statusPembayaran->urutan }}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

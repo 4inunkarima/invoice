@@ -17,7 +17,8 @@ class status_pembayaranRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'nama_status'
+        'nama_status',
+        'urutan'
     ];
 
     /**

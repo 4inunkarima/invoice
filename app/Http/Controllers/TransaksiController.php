@@ -36,7 +36,9 @@ class TransaksiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $transaksi  = Transaksi::with(['tampil', 'pembayarans'])->orderBy('id', 'ASC')->paginate(10);
+        $transaksi  = Transaksi::with(['totalins', 'pembayarans'])->orderBy('id', 'ASC')->paginate(10);
+        // $tampil = Invoice::orderBy('total','asc')->get();
+        // $pembayarans = Status_pembayaran::orderBy('nama_status','asc')->get();
         return view('transaksis.index', compact('transaksi'));
     }
 
@@ -70,19 +72,35 @@ class TransaksiController extends AppBaseController
             // 'batas_pambayaran'=>'required'
         ]);
 
-        // $data['id']=\Uuid::generate(4);
-        // $data['kode_invoice']='request'->kode_invoice;
-        // $data['kode_pembayaran']='request'->kode_pembayaran;
-        // $data['deskripsi_transaksi']='request'->deskripsi_transaksi;
-        // $data['batas_pembayaran']='request'->batas_pembayaran;
-        // $data['created_at']=date('Y-m-d H:i:s');
-        // $date['update_at']=date('Y-m-d H:i:s');
-
         Transaksi::create($request->all());
         // Transaksi::insert($data);
         \Session::flash('sukses','Transaksi berhasil ditambah');
         return redirect('/add');
     }
+
+
+    public function naik_status($id){
+        try {
+            $transaksi = Transaksi::find($id);
+            $id_status = $transaksi->kode_pemnbayaran;
+            $urutan_status = $transaksi->pembayarans->urutan;
+ 
+            $urutan_baru = $urutan_status + 1;
+            $status_baru = status_pembayaran::where('urutan',$urutan_baru)->first();
+ 
+            Transaksi::where('id',$id)->update([
+                'kode_pembayaran'=>$status_baru->id
+            ]);
+ 
+            \Session::flash('sukses','Status berhasil dinaikkan');
+ 
+        } catch (\Exception $e) {
+            \Session::flash('gagal',$e->getMessage());
+        }
+ 
+        return redirect()->back();
+    }
+
 
     /**
      * Display the specified Transaksi.
@@ -113,15 +131,12 @@ class TransaksiController extends AppBaseController
      */
     public function edit($id)
     {
-        $transaksi = $this->transaksiRepository->find($id);
-
-        if (empty($transaksi)) {
-            Flash::error('Transaksi not found');
-
-            return redirect(route('transaksis.index'));
-        }
-
-        return view('transaksis.edit')->with('transaksi', $transaksi);
+        $trans = Transaksi::find($id);
+        $title = "Edit Transaksi";
+        $kode_invoice = Invoice::orderBy('id','ASC')->get();
+        $kode_pembayaran = status_pembayaran::orderBy('nama_status')->get();
+        
+        return view('transaksis.edit', compact('title','kode_invoice', 'kode_pembayaran', 'trans'));
     }
 
     /**
@@ -132,21 +147,29 @@ class TransaksiController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateTransaksiRequest $request)
+    public function update($id, Request $request)
     {
-        $transaksi = $this->transaksiRepository->find($id);
+        $this->validate($request,[
+            'kode_invoices'=>'required',
+            'kode_pembayaran'=>'required',
+            'batas_pembayaran'=>'required',
+            'deskripsi_transaksi'=>'required',
+            
+        ]);
 
-        if (empty($transaksi)) {
-            Flash::error('Transaksi not found');
 
-            return redirect(route('transaksis.index'));
-        }
+        $data['kode_invoices']=$request->kode_invoices;
+        $data['kode_pembayaran']=$request->kode_pembayaran;
+        $data['batas_pembayaran']=$request->batas_pembayaran;
+        $data['deskripsi_transaksi']=$request->deskripsi_transaksi;
+        $data['updated_at']=date('Y-m-d H:i:s');
 
-        $transaksi = $this->transaksiRepository->update($request->all(), $id);
+        Transaksi::where('id',$id)->update($data);
+ 
+        \Session::flash('sukses','Transaksi berhasil diupdate');
+ 
+        return redirect('transaksi-pesanan');
 
-        Flash::success('Transaksi updated successfully.');
-
-        return redirect(route('transaksis.index'));
     }
 
     /**
@@ -160,18 +183,8 @@ class TransaksiController extends AppBaseController
      */
     public function destroy($id)
     {
-        $transaksi = $this->transaksiRepository->find($id);
-
-        if (empty($transaksi)) {
-            Flash::error('Transaksi not found');
-
-            return redirect(route('transaksis.index'));
-        }
-
-        $this->transaksiRepository->delete($id);
-
-        Flash::success('Transaksi deleted successfully.');
-
-        return redirect(route('transaksis.index'));
+        $transaksi = Transaksi::find($id);
+        $transaksi->delete();
+        return redirect()->back()->with(['success' => 'Data telah dihapus']);
     }
 }

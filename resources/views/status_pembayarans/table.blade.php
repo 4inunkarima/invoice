@@ -10,6 +10,7 @@
         @foreach($statusPembayarans as $statusPembayaran)
             <tr>
                 <td>{{ $statusPembayaran->nama_status }}</td>
+                <td>{{ $statusPembayaran->urutan }}</td>
                 <td>
                     {!! Form::open(['route' => ['statusPembayarans.destroy', $statusPembayaran->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
