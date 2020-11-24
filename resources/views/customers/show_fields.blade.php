@@ -4,18 +4,6 @@
     <p>{{ $customer->nama }}</p>
 </div>
 
-<!-- Organisasi Field -->
-<div class="form-group">
-    {!! Form::label('organisasi', 'Organisasi:') !!}
-    <p>{{ $customer->organisasi }}</p>
-</div>
-
-<!-- Mata Uang Field -->
-<div class="form-group">
-    {!! Form::label('mata_uang', 'Mata Uang:') !!}
-    <p>{{ $customer->mata_uang }}</p>
-</div>
-
 <!-- Email Field -->
 <div class="form-group">
     {!! Form::label('email', 'Email:') !!}
@@ -28,23 +16,18 @@
     <p>{{ $customer->telepon }}</p>
 </div>
 
-<!-- Fax Number Field -->
+<!-- Gender Field -->
 <div class="form-group">
-    {!! Form::label('fax_number', 'Fax Number:') !!}
-    <p>{{ $customer->fax_number }}</p>
+    {!! Form::label('gender', 'Gender:') !!}
+    <p>{{ $customer->gender }}</p>
 </div>
 
-<!-- Note Field -->
+<!-- Organisasi Field -->
 <div class="form-group">
-    {!! Form::label('note', 'Note:') !!}
-    <p>{{ $customer->note }}</p>
+    {!! Form::label('organisasi', 'Organisasi:') !!}
+    <p>{{ $customer->organisasi }}</p>
 </div>
 
-<!-- Konfirmasi Password Field -->
-<div class="form-group">
-    {!! Form::label('konfirmasi_password', 'Konfirmasi Password:') !!}
-    <p>{{ $customer->konfirmasi_password }}</p>
-</div>
 
 <!-- Alamat Field -->
 <div class="form-group">
@@ -58,10 +41,10 @@
     <p>{{ $customer->kode_pos }}</p>
 </div>
 
-<!-- State Field -->
+<!-- Provinsi Field -->
 <div class="form-group">
-    {!! Form::label('state', 'State:') !!}
-    <p>{{ $customer->state }}</p>
+    {!! Form::label('provinsi', 'Provinsi:') !!}
+    <p>{{ $customer->provinsi }}</p>
 </div>
 
 <!-- Alamat Tambahan Field -->
@@ -82,22 +65,22 @@
     <p>{{ $customer->negara }}</p>
 </div>
 
-<!-- Gender Field -->
-<div class="form-group">
-    {!! Form::label('gender', 'Gender:') !!}
-    <p>{{ $customer->gender }}</p>
-</div>
-
 <!-- Username Field -->
 <div class="form-group">
     {!! Form::label('username', 'Username:') !!}
     <p>{{ $customer->username }}</p>
 </div>
 
-<!-- Bahasa Field -->
+<!-- Fax Number Field -->
 <div class="form-group">
-    {!! Form::label('bahasa', 'Bahasa:') !!}
-    <p>{{ $customer->bahasa }}</p>
+    {!! Form::label('fax_number', 'Fax Number:') !!}
+    <p>{{ $customer->fax_number }}</p>
+</div>
+
+<!-- Note Field -->
+<div class="form-group">
+    {!! Form::label('note', 'Note:') !!}
+    <p>{{ $customer->note }}</p>
 </div>
 
 <!-- Password Field -->
@@ -105,6 +88,13 @@
     {!! Form::label('password', 'Password:') !!}
     <p>{{ $customer->password }}</p>
 </div>
+
+<!-- Konfirmasi Password Field -->
+<div class="form-group">
+    {!! Form::label('konfirmasi_password', 'Konfirmasi Password:') !!}
+    <p>{{ $customer->konfirmasi_password }}</p>
+</div>
+
 
 <!-- Created At Field -->
 <div class="form-group">

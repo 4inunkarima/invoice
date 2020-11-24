@@ -6,39 +6,25 @@
                     <strong>Basic Information</strong>
                         </div>
                             <div class="card-body">
-                                <!-- <div class="media">
-                                    <img src="views/customers/prof.png" class="mr-3" alt="prof">
-                                    <div class="media-body">
-                                    <select id="inputState" class="form-control col-md-4">
-                                            <option selected>Pilih...</option>
-                                            <option>Individu</option>
-                                            <option>Organisation</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr /> -->
                                 <form>
                                     <div class="row">
                                         <div class="col-md-3">
                                         <label for="nama">Nama</label>
                                         <input type="text" name="nama" value="{{$customer->email}}" class="form-control" >
                                         <br/>
-                                        <label for="email">Email</label>
-                                        <input type="text" name="email" value="{{$customer->email}}" class="form-control">
+                                        <label for="gender">Gender</label>
+                                        <input type="text" name="gender" value="{{$customer->gender}}" class="form-control">
                                         </div>
                                         <div class="col-md-3">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email" value="{{$customer->email}}" class="form-control">
+                                        <br/>
                                         <label for="organisasi">Nama Organisasi</label>
                                         <input type="text" name="organisasi" value="{{$customer->organisasi}}" class="form-control">
-                                        <br/>
-                                        <label for="username">Username</label>
-                                        <input type="text" name="username" value="{{$customer->username}}" class="form-control">
                                         </div>
                                         <div class="col">
-                                        <label for="mata_uang">Mata Uang</label>
-                                        <input type="text" name="mata_uang" value="{{$customer->mata_uang}}"  class="form-control">
-                                        <br/>
-                                        <label for="bahasa">Bahasa</label>
-                                        <input type="text" name="bahasa" value="{{$customer->bahasa}}" class="form-control">
+                                        <label for="telepon">Telepon</label>
+                                        <input type="text" name="telepon" value="{{$customer->telepon}}"  class="form-control">
                                     </div>
                                 </div> 
                             </div>
@@ -69,8 +55,8 @@
                                         <input type="text" name="kota" value="{{$customer->kota}}" class="form-control">
                                         </div>
                                         <div class="col-md-3">
-                                        <label for="state">State</label>
-                                        <input type="text" name="state" value="{{$customer->state}}" class="form-control">
+                                        <label for="provinsi">Provinsi</label>
+                                        <input type="text" name="provinsi" value="{{$customer->provinsi}}" class="form-control">
                                         <br/>
                                         <label for="negara">Negara</label>
                                         <input type="text" name="negara" value="{{$customer->negara}}" class="form-control">
@@ -88,14 +74,13 @@
                                 <strong>Aditional Informations</strong>
                             </div>
                             <div class="card-body">
-                                
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="telepon">Telepon</label>
-                                            <input type="text" name="telepon" value="{{$customer->telepon}}" class="form-control">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="username" value="{{$customer->username}}" class="form-control">
                                             <br/>
-                                            <label for="gender">Gender</label>
-                                            <input type="text" name="gender" value="{{$customer->gender}}" class="form-control">
+                                            <label for="password">Password</label>
+                                            <input type="text" name="password" value="{{$customer->password}}" class="form-control">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="fax_number">Fax Number</label>
@@ -105,12 +90,8 @@
                                             <input class="form-control" name="note" value="{{$customer->note}}" type="text" rows="4">
                                         </div>
                                     </div>
-                                <hr />
+                                    <br/>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="password">Password</label>
-                                            <input type="text" name="password" value="{{$customer->password}}" class="form-control">
-                                        </div>
                                         <div class="col-md-6">
                                             <label for="konfirmasi_password">Konfirmasi Password</label>
                                             <input type="text" name="konfirmasi_password" value="{{$customer->konfirmasi_password}}" class="form-control">

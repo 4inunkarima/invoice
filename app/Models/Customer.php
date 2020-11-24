@@ -43,23 +43,22 @@ class Customer extends Model
 
     public $fillable = [
         'nama',
-        'organisasi',
-        'mata_uang',
         'email',
         'telepon',
-        'fax_number',
-        'note',
-        'konfirmasi_password',
+        'gender',
+        'organisasi',
         'alamat',
         'kode_pos',
-        'state',
+        'provinsi',
         'alamat_tambahan',
         'kota',
         'negara',
-        'gender',
         'username',
-        'bahasa',
-        'password'
+        'fax_number',
+        'note',
+        'password',
+        'konfirmasi_password'
+        
     ];
 
     /**
@@ -70,23 +69,21 @@ class Customer extends Model
     protected $casts = [
         'id' => 'integer',
         'nama' => 'string',
-        'organisasi' => 'string',
-        'mata_uang' => 'string',
         'email' => 'string',
-        'telepon' => 'string',
-        'fax_number' => 'integer',
-        'note' => 'string',
-        'konfirmasi_password' => 'string',
+        'telepon' => 'integer',
+        'gender' => 'enum',
+        'organisasi' => 'string',
         'alamat' => 'string',
         'kode_pos' => 'integer',
-        'state' => 'string',
+        'provinsi' => 'string',
         'alamat_tambahan' => 'string',
         'kota' => 'string',
         'negara' => 'string',
-        'gender' => 'string',
         'username' => 'string',
-        'bahasa' => 'string',
-        'password' => 'string'
+        'fax_number' => 'string',
+        'note' => 'text',
+        'password' => 'string',
+        'konfirmasi_password' => 'string'
     ];
 
     /**

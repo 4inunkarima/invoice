@@ -66,9 +66,9 @@ class CustomerDataTable extends DataTable
     {
         return [
             'nama',
-            'organisasi',
-            'mata_uang',
+            'alamat',
             'email',
+            'organisasi',
             'telepon'
         ];
     }
