@@ -16,45 +16,17 @@
                              <a class="pull-right" href="{{ route('produks.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
                          <div class="card-body">
+                        @section('css')
+                            @include('layouts.datatables_css')
+                        @endsection
 
-                            <div class="table-responsive-sm">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="row">No.</th>
-                                            <th>Nama Produk</th>
-                                            <th>Jenis Produk</th>
-                                            <th>Stok</th>
-                                            <th>Harga Produk</th>
-                                            <th>Tanggal Masuk</th>
-                                            <th colspan="3">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($produks as $produk)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $produk->nama_produk }}</td>
-                                            <td>{{ $produk->jenis_produk }}</td>
-                                            <td>{{ $produk->stok }}</td>
-                                            <td>{{ $produk->harga_produk }}</td>
-                                            <td>{{ $produk->created_at }}</td>
-                                                <td>
-                                                {!! Form::open(['route' => ['produks.destroy', $produk->id], 'method' => 'delete']) !!}
-                                                <div class='btn-group'>
-                                                    <a href="{{ route('produks.show', [$produk->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
-                                                    <a href="{{ route('produks.edit', [$produk->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                                                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
-                                                </div>
-                                                {!! Form::close() !!}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                                {{ $produks->links() }}
-                            </div>
+                        {!! $dataTable->table(['width' => '100%', 'class' => 'table table-striped table-bordered']) !!}
 
+                        @push('scripts')
+                            @include('layouts.datatables_js')
+                        {!! $dataTable->scripts() !!}
+                        @endpush
+                            
                          </div>
                      </div>
                  </div>

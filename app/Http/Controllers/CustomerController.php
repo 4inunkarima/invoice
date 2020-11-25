@@ -41,7 +41,7 @@ class CustomerController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create() 
     {
         return view('customers.create');
     }
@@ -55,6 +55,10 @@ class CustomerController extends AppBaseController
      */
     public function store(CreateCustomerRequest $request)
     {
+        $this->validate($request, [
+            'password' => 'min:3|required_with:konfirmasi_password|same:konfirmasi_password',
+            'konfirmasi_password' => 'min:3'
+        ]);    
         $input = $request->all();
 
         $customer = $this->customerRepository->create($input);

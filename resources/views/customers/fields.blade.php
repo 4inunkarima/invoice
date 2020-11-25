@@ -13,15 +13,15 @@
                                         <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ old('nama') }}" required>
                                         <br/>
                                         <label for="gender">Gender</label>
-                                            <select id="inputState" name="gender" class="form-control">
-                                                <option selected>Choose...</option>
+                                            <select id="inputState" name="gender" class="form-control" value="{{ old('gender') }}" required>
+                                                <option selected>Pilih...</option>
                                                 <option>Laki-laki</option>
                                                 <option>Perempuan</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3">
                                         <label for="email">Email</label>
-                                        <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
                                         <br/>
                                         <label for="organisasi">Nama Organisasi</label>
                                         <input type="text" name="organisasi" class="form-control" placeholder="Nama Organisasi" value="{{ old('organisasi') }}" required>
@@ -59,11 +59,11 @@
                                         <input type="text" name="kota" class="form-control" placeholder="Kota" value="{{ old('kota') }}" required>
                                         </div>
                                         <div class="col-md-3">
-                                        <label for="provinsi">Pr0vinsi</label>
+                                        <label for="provinsi">Provinsi</label>
                                         <input type="text" name="provinsi" class="form-control" placeholder="Provinsi" value="{{ old('provinsi') }}" required>
                                         <br/>
                                         <label for="negara">Negara</label>
-                                        <select id="inputState" name="negara" class="form-control" required>
+                                        <select id="inputState" name="negara" class="form-control" value="{{ old('negara') }}" required>
                                             <option selected>Pilih..</option>
                                             <option>Indonesia</option>
                                             <option>Brunei Darussalam</option>
@@ -91,7 +91,7 @@
                                             <input type="text" name="username" class="form-control" placeholder="Username" value="{{ old('username') }}" required>
                                             <br/>
                                         <label for="password">Password</label>
-                                            <input type="text" name="password" class="form-control" placeholder="Password" value="{{ old('password') }}" required>
+                                            <input type="password" name="password" class="form-control" placeholder="Password" value="{{ old('password') }}" required>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="fax_number">Fax Number</label>
@@ -105,7 +105,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                         <label for="konfirmasi_password">Konfirmasi Password</label>
-                                            <input type="text" name="konfirmasi_password" class="form-control" placeholder="konfirmasi_password" required>
+                                            <input type="password" name="konfirmasi_password" class="form-control" placeholder="Konfirmasi Password" required>
                                         </div>
                                     </div>
                                 <br/>

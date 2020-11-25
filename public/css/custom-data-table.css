@@ -85,7 +85,7 @@
     text-align: center;
 }
 
-dataTables_wrapper. table tr td:last-child {
+dataTables_wrapper table tr td:last-child {
     width: 120px !important;
     border-right: 0;
 }

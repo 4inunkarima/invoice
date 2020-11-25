@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\DataTables\status_pembayaranDataTable;
 
 class status_pembayaranController extends AppBaseController
 {
@@ -27,12 +28,11 @@ class status_pembayaranController extends AppBaseController
      *
      * @return Response
      */
-    public function index(Request $request)
+    public function index(status_pembayaranDataTable $statusDataTable)
     {
-        $statusPembayarans = $this->statusPembayaranRepository->all();
+        // $statusPembayarans = $this->statusPembayaranRepository->all();
 
-        return view('status_pembayarans.index')
-            ->with('statusPembayarans', $statusPembayarans);
+        return $statusDataTable->render('status_pembayarans.index');
     }
 
     /**
