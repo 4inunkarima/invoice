@@ -11,7 +11,7 @@ use App\Models\Produk;
 use PDF;
 use Flash;
 use Response;
-use DB;
+use App\DataTables\ProdukDataTable;
 
 class ProdukController extends Controller
 {
@@ -20,10 +20,10 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProdukDataTable $produksDataTable)
     {
-        $produks = DB::table('produks')->paginate(5);
-        return view('produks.index', ['produks' => $produks]);
+        // dd($produksDataTable->ajax());
+        return $produksDataTable->render('produks.index');
     }
 
     /**
