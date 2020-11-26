@@ -22,12 +22,6 @@
         <span>Invoice</span>
     </a>
 </li>
-<li class="nav-item {{ Request::is('statusPembayarans*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('statusPembayarans.index') }}">
-        <i class="nav-icon icon-bell"></i>
-        <span>Status Pembayaran</span>
-    </a>
-</li>
 <li class="nav-item {{ Request::is('transaksis*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('transaksis.index') }}">
         <i class="nav-icon icon-credit-card"></i>
@@ -40,9 +34,14 @@
         <span>Report</span>
     </a>
 </li>
-<li class="nav-item {{ Request::is('items*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('items.index') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Items</span>
-    </a>
-</li>
+<div class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        Setting
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{{ route('statusPembayarans.index') }}">Status Pembayaran</a>
+    <a class="dropdown-item" href="#">Another Item</a>
+    <a class="dropdown-item" href="#">One more item</a>
+  </div>
+</div>

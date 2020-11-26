@@ -68,7 +68,7 @@
                             </tbody>
                         </table>
                         <div class="float-right">
-                            {{ $invoice->links() }}
+
                         </div>
                     </div>
                 </div>

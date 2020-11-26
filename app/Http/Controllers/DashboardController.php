@@ -20,10 +20,8 @@ class DashboardController extends Controller
     {
         $showCustomer = DB::table('customers')->count();
         $showInvoice = DB::table('invoices')->count();
-        $showLunas = DB::table('invoices')->pluck('status');
-        foreach ($showLunas as $status){
-            echo $status;
-        }
+        $showTransaksi = DB::table('transaksis')->count();
+        
         $datacustomer = \App\Models\Customer::all();
         $customer1 = [];
         foreach($datacustomer as $dc){
@@ -34,9 +32,8 @@ class DashboardController extends Controller
         return view('dashboard.index') 
         ->with('showCustomer', $showCustomer)
         ->with('showInvoice', $showInvoice)
-        ->with('showLunas', $showLunas)
+        ->with('showTransaksi', $showTransaksi)
 
-        ->with('showLunas', $showLunas)
         ->with('customerName',$customer1);
         
     }

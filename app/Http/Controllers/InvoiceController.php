@@ -34,7 +34,7 @@ class InvoiceController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $invoice  = Invoice::with(['customer', 'detail'])->orderBy('id', 'ASC')->paginate(10);
+        $invoice  = Invoice::with(['customer', 'detail'])->orderBy('id', 'ASC');
         return view('invoices.index', compact('invoice'));
     }
 

@@ -17,9 +17,9 @@
 						<div class="col-md-4">
 							<div class="card text-center">
 								<div class="card-body">
-									<h3>Lunas</h3>
+									<h3>Transaksi</h3>
 									<hr>
-									<p> {{ $showLunas }} </p>
+									<p> {{ $showTransaksi }} </p>
 								</div>
 							</div>
 						</div>
@@ -43,10 +43,10 @@
 							let massPopChart = new Chart(customers, {
 								type: 'doughnut',
 								data:{
-									labels:['Customer', 'Invoice', 'Lunas'],
+									labels:['Customer', 'Invoice', 'Transaksi'],
 								datasets:[{
 									label:'Diagram Peningkatan',
-									data:[{!! json_encode($showCustomer) !!}, {!! json_encode($showInvoice) !!}, {!! json_encode($showLunas) !!}
+									data:[{!! json_encode($showCustomer) !!}, {!! json_encode($showInvoice) !!}, {!! json_encode($showTransaksi) !!}
 									],
 									backgroundColor:[
 										'rgba(255, 99, 132, 0.6)',
