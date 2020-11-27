@@ -37,7 +37,7 @@ class Customer extends Model
     public $table = 'customers';
     
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at']; 
 
 
 

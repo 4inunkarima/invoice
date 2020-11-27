@@ -18,9 +18,9 @@ class DashboardController extends Controller
     // }
     public function index()
     {
-        $showCustomer = DB::table('customers')->count();
-        $showInvoice = DB::table('invoices')->count();
-        $showTransaksi = DB::table('transaksis')->count();
+        $showCustomer = DB::table('customers')->where('deleted_at', null)->count();
+        $showInvoice = DB::table('invoices')->where('deleted_at', null)->count();
+        $showTransaksi = DB::table('transaksis')->where('deleted_at', null)->count();
         
         $datacustomer = \App\Models\Customer::all();
         $customer1 = [];

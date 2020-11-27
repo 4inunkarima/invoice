@@ -34,14 +34,14 @@
         <span>Report</span>
     </a>
 </li>
-<div class="dropdown">
-  <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        Setting
+<li class="nav-item dropdown">
+  <a class="nav-link" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+       <i class="nav-icon icon-wrench"></i>
+       <span>Setting</span>
   </a>
-
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="{{ route('statusPembayarans.index') }}">Status Pembayaran</a>
     <a class="dropdown-item" href="#">Another Item</a>
     <a class="dropdown-item" href="#">One more item</a>
   </div>
-</div>
+</li>

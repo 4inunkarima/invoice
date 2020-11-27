@@ -8,7 +8,13 @@ use App\Models\Transaksi;
 
 class Transaksi extends Model
 {
-    protected $table ='transaksis';
+    use SoftDeletes;
+
+    public $table = 'transaksis';
+
+    protected $dates = ['deleted_at'];
+
+    // protected $table ='transaksis';
     protected $guarded=[];
     protected $primaryKey = 'id';
     public $incrementing = false;
