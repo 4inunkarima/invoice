@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-	<section class="login_box_area p_120">
-		<div class="container">
+	<section class="login_box_area p_120 ">
+		<div class="container ">
 			<div class="row">
-				<div class="col-md-12">
-                    <div class="row">
+				<div class="col-md-12 ">
+                    <div class="row my-3">
 						<div class="col-md-4">
 							<div class="card text-center">
 								<div class="card-body">
