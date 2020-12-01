@@ -34,7 +34,7 @@
     @endslot -->
 
     <!-- KOTAK UNTUK MENAMPILKAN TOTAL DATA -->
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-4">
             <div class="small-box bg-info">
                 <div class="inner">
@@ -68,11 +68,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
       <!-- TABLE UNTUK MENAMPILKAN DATA TRANSAKSI -->
-      <div class="table-responsive">
+      <!-- <div class="table-responsive">
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -85,13 +85,13 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> -->
                                 <!-- LOOPING MENGGUNAKAN FORELSE, DIRECTIVE DI LARAVEL 5.6 -->
                            
                                
-                            </tbody>
+                            <!-- </tbody>
                         </table>
-                    </div>
+                    </div> -->
                     <!-- @slot('footer')
 ​
                     @endslot

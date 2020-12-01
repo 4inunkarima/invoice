@@ -26,27 +26,25 @@
                                 @endslot -->
                                 <form action="#" method="get">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Mulai Tanggal</label>
-                                                <input type="text" name="start_date" 
-                                                    class="form-control {{ $errors->has('start_date') ? 'is-invalid':'' }}"
-                                                    id="start_date"
-                                                    value="{{ request()->get('start_date') }}"
-                                                    >
+                                                <label for="">Tanggal Awal</label>
+                                                <input type="date" name="tanggal awal" 
+                                                    class="form-control"
+                                                    id="tgl_awal">
                                             </div>
                                             <div class="form-group">
-                                                <label for="">Sampai Tanggal</label>
-                                                <input type="text" name="end_date" 
-                                                    class="form-control {{ $errors->has('end_date') ? 'is-invalid':'' }}"
-                                                    id="end_date"
-                                                    value="{{ request()->get('end_date') }}">
+                                                <label for="">Tanggal Akhir</label>
+                                                <input type="date" name="tanggal akhir" 
+                                                    class="form-control"
+                                                    id="tgl_akhir">
                                             </div>
                                             <div class="form-group">
-                                                <button class="btn btn-primary btn-sm">Cari</button>
+                                                <a href="" onclick="this.href='/cetak-laporan/'+ document.getElementById('tgl_awal').value + '/' + document.getElementById('tgl_akhir').value" 
+                                                target="_blank" class="btn btn-primary col-md-12">Cetak Laporan</a>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <!-- <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="">Pelanggan</label>
                                                 <select name="customer_id" class="form-control">
@@ -61,7 +59,7 @@
                                                     
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </form>
     ​

@@ -44,5 +44,9 @@ class Report extends Model
         
     ];
 
+    public function trans()
+    {
+        return $this->hasMany('App\Models\Transaksi','transaksi_id','id');
+    }
     
 }

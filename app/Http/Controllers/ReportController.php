@@ -6,9 +6,13 @@ use App\Http\Requests\CreateReportRequest;
 use App\Http\Requests\UpdateReportRequest;
 use App\Repositories\ReportRepository;
 use App\Http\Controllers\AppBaseController;
+// use App\Http\Controllers\Transaksi;
+use App\Models\Transaksi;
+use App\Models\status_pembayaran;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+
 
 class ReportController extends AppBaseController
 {
@@ -152,5 +156,11 @@ class ReportController extends AppBaseController
         Flash::success('Report deleted successfully.');
 
         return redirect(route('reports.index'));
+    }
+
+    public function cetak($tglawal, $tglakhir){
+        //dd(["Tanggal Awal : " .$tglawal, "Tanggal Akhir : " .$tglakhir]);
+        $cetakPertanggal = Transaksi::with('trans')->whereBetween('created_at', [$tglawal, $tglakhir])->get();
+        return view('reports.cetak_Pertanggal', compact('cetakPertanggal'));
     }
 }

@@ -61,4 +61,4 @@ Route::resource('statusPembayarans', 'status_pembayaranController');
     Route::get('naik-status/{id}','TransaksiController@naik_status');
 
 Route::resource('items', 'ItemController');
-
+Route::get('/cetak-laporan/{tglawal}/{tglakhir}','ReportController@cetak')->name('cetak-laporan');
