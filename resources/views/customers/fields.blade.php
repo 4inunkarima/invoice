@@ -3,32 +3,32 @@
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-plus-square-o fa-lg"></i>
-                    <strong>Basic Information</strong>
+                    <strong>{{ __('customer.basic') }}</strong>
                         </div>
                             <div class="card-body">                
                                 <form> 
                                     <div class="row">
                                         <div class="col-md-3">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ old('nama') }}" required>
+                                        <label for="nama">{{ __('customer.nama') }}</label>
+                                        <input type="text" name="nama" class="form-control" placeholder="{{ __('customer.nama') }}" value="{{ old('nama') }}" required>
                                         <br/>
-                                        <label for="gender">Gender</label>
+                                        <label for="gender">{{ __('customer.gender') }}</label>
                                             <select id="inputState" name="gender" class="form-control" value="{{ old('gender') }}" required>
-                                                <option selected>Pilih...</option>
-                                                <option>Laki-laki</option>
-                                                <option>Perempuan</option>
+                                                <option selected>{{ __('customer.pilih') }}</option>
+                                                <option>{{ __('customer.male') }}</option>
+                                                <option>{{ __('customer.female') }}</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3">
-                                        <label for="email">Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
+                                        <label for="email">{{ __('customer.email') }}</label>
+                                        <input type="email" name="email" class="form-control" placeholder="{{ __('customer.email') }}" value="{{ old('email') }}" required>
                                         <br/>
-                                        <label for="organisasi">Nama Organisasi</label>
-                                        <input type="text" name="organisasi" class="form-control" placeholder="Nama Organisasi" value="{{ old('organisasi') }}" required>
+                                        <label for="organisasi">{{ __('customer.organisasi') }}</label>
+                                        <input type="text" name="organisasi" class="form-control" placeholder="{{ __('customer.organisasi') }}" value="{{ old('organisasi') }}" required>
                                         </div>
                                         <div class="col">
-                                        <label for="telepon">Telepon</label>
-                                        <input type="text" name="telepon" class="form-control" placeholder="Telepon" value="{{ old('telepon') }}" required>
+                                        <label for="telepon">{{ __('customer.telepon') }}</label>
+                                        <input type="text" name="telepon" class="form-control" placeholder="{{ __('customer.telepon') }}" value="{{ old('telepon') }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -40,31 +40,31 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>Address</strong>
+                                <strong>{{ __('customer.alamat') }}</strong>
                             </div>
                             <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                        <label for="alamat">Alamat</label>
-                                        <input type="text" name="alamat" class="form-control" placeholder="Alamat" value="{{ old('alamat') }}" required>
+                                        <label for="alamat">{{ __('customer.alamat') }}</label>
+                                        <input type="text" name="alamat" class="form-control" placeholder="{{ __('customer.alamat') }}" value="{{ old('alamat') }}" required>
                                         <br/>
-                                        <label for="alamat_tambahan">Alamat Tambahan</label>
-                                        <input type="text" name="alamat_tambahan" class="form-control" placeholder="Alamat Tambahan" value="{{ old('alamat_tambahan') }}" required>
+                                        <label for="alamat_tambahan">{{ __('customer.alamat_tambahan') }}</label>
+                                        <input type="text" name="alamat_tambahan" class="form-control" placeholder="{{ __('customer.alamat_tambahan') }}" value="{{ old('alamat_tambahan') }}" required>
                                         </div>
                                         <div class="col-md-3">
-                                        <label for="kode_pos">Kode Pos</label>
-                                        <input type="text" name="kode_pos" class="form-control" placeholder="Kode Pos" value="{{ old('kode_pos') }}" required>
+                                        <label for="kode_pos">{{ __('customer.kode_pos') }}</label>
+                                        <input type="text" name="kode_pos" class="form-control" placeholder="{{ __('customer.kode_pos') }}" value="{{ old('kode_pos') }}" required>
                                         <br/>
-                                        <label for="kota">Kota</label>
-                                        <input type="text" name="kota" class="form-control" placeholder="Kota" value="{{ old('kota') }}" required>
+                                        <label for="kota">{{ __('customer.kota') }}</label>
+                                        <input type="text" name="kota" class="form-control" placeholder="{{ __('customer.kota') }}" value="{{ old('kota') }}" required>
                                         </div>
                                         <div class="col-md-3">
-                                        <label for="provinsi">Provinsi</label>
-                                        <input type="text" name="provinsi" class="form-control" placeholder="Provinsi" value="{{ old('provinsi') }}" required>
+                                        <label for="provinsi">{{ __('customer.provinsi') }}</label>
+                                        <input type="text" name="provinsi" class="form-control" placeholder="{{ __('customer.provinsi') }}" value="{{ old('provinsi') }}" required>
                                         <br/>
-                                        <label for="negara">Negara</label>
+                                        <label for="negara">{{ __('customer.negara') }}</label>
                                         <select id="inputState" name="negara" class="form-control" value="{{ old('negara') }}" required>
-                                            <option selected>Pilih..</option>
+                                            <option selected>{{ __('customer.pilih') }}</option>
                                             <option>Indonesia</option>
                                             <option>Brunei Darussalam</option>
                                             <option>Kamboja</option>
@@ -82,35 +82,35 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>Aditional Informations</strong>
+                                <strong>{{ __('customer.informasi') }}</strong>
                             </div>
                             <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                        <label for="username">Username</label>
-                                            <input type="text" name="username" class="form-control" placeholder="Username" value="{{ old('username') }}" required>
+                                        <label for="username">{{ __('customer.username') }}</label>
+                                            <input type="text" name="username" class="form-control" placeholder="{{ __('customer.username') }}" value="{{ old('username') }}" required>
                                             <br/>
-                                        <label for="password">Password</label>
-                                            <input type="password" name="password" class="form-control" placeholder="Password" value="{{ old('password') }}" required>
+                                        <label for="password">{{ __('customer.password') }}</label>
+                                            <input type="password" name="password" class="form-control" placeholder="{{ __('customer.password') }}" value="{{ old('password') }}" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="fax_number">Fax Number</label>
-                                            <input type="text" name="fax_number" class="form-control" placeholder="Fax Number" value="{{ old('fax_number') }}" required>
+                                            <label for="fax_number">{{ __('customer.fax_number') }}</label>
+                                            <input type="text" name="fax_number" class="form-control" placeholder="{{ __('customer.fax_number') }}" value="{{ old('fax_number') }}" required>
                                             <br/>
-                                            <label for="note">Note</label>
-                                            <input class="form-control" name="note" id="exampleFormControlTextarea1" rows="4" placeholder="Note" value="{{ old('note') }}" required>
+                                            <label for="note">{{ __('customer.note') }}</label>
+                                            <input class="form-control" name="note" id="exampleFormControlTextarea1" rows="4" placeholder="{{ __('customer.note') }}" value="{{ old('note') }}" required>
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="row">
                                         <div class="col-md-6">
-                                        <label for="konfirmasi_password">Konfirmasi Password</label>
-                                            <input type="password" name="konfirmasi_password" class="form-control" placeholder="Konfirmasi Password" required>
+                                        <label for="konfirmasi_password">{{ __('customer.konfirmasi_password') }}</label>
+                                            <input type="password" name="{{ __('customer.konfirmasi_password') }}" class="form-control" placeholder="Konfirmasi Password" required>
                                         </div>
                                     </div>
                                 <br/>
-                                <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true">Save</button>
-                                <a href="{{ route('customers.index') }}" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true">{{ __('customer.simpan') }}</button>
+                                <a href="{{ route('customers.index') }}" class="btn btn-secondary">{{ __('customer.keluar') }}</a>
                             </form>
                         </div>
                     </div>

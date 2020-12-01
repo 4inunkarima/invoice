@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-         <a href="{!! route('invoices.index') !!}">Invoice</a>
+         <a href="{!! route('invoices.index') !!}">{{ __('invoice.invoice') }}</a>
       </li>
-      <li class="breadcrumb-item active">Create</li>
+      <li class="breadcrumb-item active">{{ __('invoice.create') }}</li>
     </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>Create Invoice</strong>
+                                <strong>{{ __('invoice.create_invoice') }}</strong>
                             </div>
                             <div class="card-body">
                                 <div class="media">
@@ -58,7 +58,7 @@
                                 <hr />
                             <div class="row">
                             <div class="col-md-12 mt-3">
-                            <h3>Daftar Produk</h3>
+                            <h3>{{ __('invoice.product_list') }}</h3>
                             <br/>
                                 <form action="{{ route('invoice.update', ['id' => $invoice->id]) }}" method="post">
                                 @csrf
@@ -66,11 +66,11 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</td>
-                                            <th scope="col">Produk</td>
-                                            <th scope="col">Qty</td>
-                                            <th scope="col">Harga</td>
-                                            <th scope="col">Subtotal</td>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">{{ __('invoice.product') }}</td>
+                                            <th scope="col">{{ __('invoice.qty') }}</td>
+                                            <th scope="col">{{ __('invoice.price') }}</td>
+                                            <th scope="col">{{ __('invoice.subtotal') }}</td>
+                                            <th scope="col">{{ __('invoice.action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -83,12 +83,12 @@
                                             <td>Rp {{ number_format($detail->harga_produk) }}</td>
                                             <td>Rp {{ $detail->subtotal }}</td>
                                             <td>
-                                            <a href="{{ route('invoice.hapus', $detail->id) }}" class="btn btn-danger btn-sm">Hapus</ax>
+                                            <a href="{{ route('invoice.hapus', $detail->id) }}" class="btn btn-danger btn-sm">{{ __('invoice.delete') }}</ax>
                                         </td>
                                         </tr>
                                         @empty
                                         <tr>
-                                            <td colspan="8" class="text-center">Tidak ada data</td>
+                                            <td colspan="8" class="text-center">{{ __('invoice.comment') }}</td>
                                         </tr> 
                                         @endforelse
                                     </tbody>
@@ -98,7 +98,7 @@
                                             <td>
                                                 <input type="hidden" name="_method" value="PUT" class="form-control">
                                                 <select name="produk_id" class="form-control">
-                                                    <option value="">Pilih Produk</option>
+                                                    <option value="">{{ __('invoice.select_product') }}</option>
                                                     @foreach ($produks as $produk)
                                                     <option value="{{ $produk->id }}">{{ $produk->nama_produk }}</option>
                                                     @endforeach
@@ -108,7 +108,7 @@
                                                 <input type="number" min="1" value="1" name="qty" class="form-control">
                                             </td>
                                             <td colspan="3">
-                                                <button class="btn btn-primary btn-sm">Tambahkan</button>
+                                                <button class="btn btn-primary btn-sm">{{ __('invoice.create') }}</button>
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -120,13 +120,13 @@
                                     <div class="totals_container">										
                                         <ul class="">
                                             <li class="">
-                                                <div class="col"><strong>Sub Total</strong></div>
+                                                <div class="col"><strong>{{ __('invoice.subtotal') }}</strong></div>
                                                 <input class="col no_input" type="text" disabled="" data-format-number="precision" value="Rp. {{ number_format($invoice->total) }}" data-calculation="subtotal">
                                             </li>
                                         </ul> 
                                         <ul class="statement_amount_container">
                                             <li class="statement_amount">
-                                            <div class="col"><strong>Biaya (<span data-currency="code">Tax</span>)</strong></div>
+                                            <div class="col"><strong>{{ __('invoice.cost') }} (<span data-currency="code">{{ __('invoice.tax') }}</span>)</strong></div>
                                             <strong><input class="col no_input bold" type="text" disabled="" data-format-number="precision" data-calculation="total" value="Rp. {{ number_format($invoice->tax) }}"></strong>
                                         </li>
                                         </ul>
@@ -135,7 +135,7 @@
                                         <li class="statement_amount">
                                             <div class="input-group border border-secondary">
                                                     <div class="input-group-prepend">
-                                                    <div class="input-group-text"><strong>Total Harga</strong></div>
+                                                    <div class="input-group-text"><strong>{{ __('invoice.total_price') }}</strong></div>
                                                     </div>
                                                     <input type="text" class="form-control" id="inlineFormInputGroup" value="Rp. {{ number_format($invoice->total_harga) }}">
                                             </div>
@@ -143,7 +143,7 @@
                                         </ul>
                                         <br/>
                                 <div class="form-group float-right">
-                                    <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">Kembali Ke Index</a>
+                                    <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">{{ __('invoice.back_index') }}</a>
                                 </div>
                                     </div>
                                 </div>

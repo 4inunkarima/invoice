@@ -13,22 +13,22 @@
                     
                         <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Invoice
+                             {{ __('invoice.invoice') }}
                              <a class="pull-right" href="{{ route('invoice.select') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Invoice ID</th>
-                                    <th scope="col">Nama Lengkap</th>
-                                    <th scope="col">No Telp</th>
-                                    <th scope="col">Total Item</th>
-                                    <th scope="col">Tanggal</th>
+                                    <th scope="col">{{ __('invoice.id') }}</th>
+                                    <th scope="col">{{ __('invoice.name') }}</th>
+                                    <th scope="col">{{ __('invoice.teleponn') }}</th>
+                                    <th scope="col">{{ __('invoice.item_total') }}</th>
+                                    <th scope="col">{{ __('invoice.date') }}</th>
                                     <!-- <th>Batas Pembayaran</th> -->
-                                    <th scope="col">Subtotal</th>
-                                    <th scope="col">Pajak</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">{{ __('invoice.subtotal') }}</th>
+                                    <th scope="col">{{ __('invoice.tax') }}</th>
+                                    <th scope="col">{{ __('invoice.total') }}</th>
+                                    <th scope="col">{{ __('invoice.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,15 +47,15 @@
                                             <form action="{{ route('invoice.destroy', $row->id) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <a href="{{ route('invoice.print', $row->id) }}" class="btn btn-primary btn-sm" target="_blank">Print</a>
-                                                <a href="{{ route('invoice.update', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
+                                                <a href="{{ route('invoice.print', $row->id) }}" class="btn btn-primary btn-sm" target="_blank">{{ __('invoice.print') }}</a>
+                                                <a href="{{ route('invoice.update', $row->id) }}" class="btn btn-warning btn-sm">{{ __('invoice.edit') }}</a>
+                                                <button class="btn btn-danger btn-sm">{{ __('invoice.delete') }}</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="text-center">Tidak ada data</td>
+                                        <td colspan="8" class="text-center">{{ __('invoice.comment') }}</td>
                                     </tr> 
                                 @endforelse
                             </tbody>

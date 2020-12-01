@@ -12,13 +12,13 @@
                 <div class="card">
                         <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Transaksi
+                             {{ __('transaksi.transaksi') }}
                              <a class="pull-right" href="{{ route('transaksi.add') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Invoice ID</th>
+                                    <th scope="col">{{ __('transaksi.id') }}</th>
                                     <!-- <th scope="col">Nama Lengkap</th> -->
                                     <th scope="col">Tanggal Buat Invoice</th>
                                     <th scope="col">Batas Pembayaran</th>
@@ -55,7 +55,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="text-center">Tidak ada data</td>
+                                        <td colspan="8" class="text-center">{{ __('transaksi.comment') }}</td>
                                     </tr> 
                                 @endforelse
                             </tbody>

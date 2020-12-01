@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Buat Invoice</h3>
+                        <h3 class="card-title">{{ __('invoice.create_invoice') }}</h3>
                     </div>
                     <div class="card-body">
                         @if (session('error'))
@@ -18,9 +18,9 @@
                         <form action="{{ route('invoice.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="">Customer</label>
+                                <label for="">{{ __('invoice.customer') }}</label>
                                 <select name="customer_id" class="form-control" required>
-                                    <option value="">Pilih</option>
+                                    <option value="">{{ __('invoice.choose') }}</option>
                                     @foreach ($customers as $customer) 
                                     <option value="{{ $customer->id }}">{{ $customer->nama }} - {{ $customer->email }} - {{$customer->alamat}}</option>
                                     @endforeach
@@ -51,8 +51,8 @@
                             </script> -->
                             
                             <div class="form-group">
-                                <button class="btn btn-primary btn-sm">Buat</button>
-                                <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">Kembali</a>
+                                <button class="btn btn-primary btn-sm">{{ __('invoice.create') }}</button>
+                                <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">{{ __('invoice.back') }}</a>
                             </div>
                         </form>
                     </div>

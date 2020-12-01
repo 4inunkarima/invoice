@@ -62,3 +62,7 @@ Route::resource('statusPembayarans', 'status_pembayaranController');
 
 Route::resource('items', 'ItemController');
 Route::get('/cetak-laporan/{tglawal}/{tglakhir}','ReportController@cetak')->name('cetak-laporan');
+
+//Route Bahasa
+Route::get('lang/{language}', 'LocalizationController@switch')->name('localization.switch');
+

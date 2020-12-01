@@ -8,7 +8,7 @@
 						<div class="col-md-4">
 							<div class="card text-center">
 								<div class="card-body">
-									<h3>Total Invoice</h3>
+									<h3>{{ __('dashboard.invoice_total') }}</h3> 
 									<hr>
 									<p>{{ $showInvoice }}</p>
 								</div>
@@ -17,7 +17,7 @@
 						<div class="col-md-4">
 							<div class="card text-center">
 								<div class="card-body">
-									<h3>Transaksi</h3>
+									<h3>{{ __('dashboard.transaction') }}</h3>
 									<hr>
 									<p> {{ $showTransaksi }} </p>
 								</div>
@@ -26,7 +26,7 @@
 						<div class="col-md-4">
 							<div class="card text-center">
 								<div class="card-body">
-									<h3>Customer</h3>
+									<h3>{{ __('dashboard.customer') }}</h3>
 									<hr>
 									<p>{{ $showCustomer }}</p>
 								</div>
@@ -43,7 +43,7 @@
 							let massPopChart = new Chart(customers, {
 								type: 'doughnut',
 								data:{
-									labels:['Customer', 'Invoice', 'Transaksi'],
+									labels:["{{ __('dashboard.label_customer') }}", "{{ __('dashboard.label_invoice') }}", "{{ __('dashboard.label_transaksi') }}"],
 								datasets:[{
 									label:'Diagram Peningkatan',
 									data:[{!! json_encode($showCustomer) !!}, {!! json_encode($showInvoice) !!}, {!! json_encode($showTransaksi) !!}
