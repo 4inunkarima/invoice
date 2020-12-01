@@ -13,7 +13,7 @@ class AddRelationshipToInvoicesDetailTable extends Migration
      */
     public function up()
     {
-        Schema::table('invoices_detail', function (Blueprint $table) {
+        Schema::table('invoice_details', function (Blueprint $table) {
             $table->foreign('invoice_id')
                 ->references('id')->on('invoices')
                 ->onDelete('cascade');
@@ -30,7 +30,7 @@ class AddRelationshipToInvoicesDetailTable extends Migration
      */
     public function down()
     {
-        Schema::table('invoices_detail', function (Blueprint $table) {
+        Schema::table('invoice_details', function (Blueprint $table) {
             $table->dropForeign('transaksis_invoice_id_foreign');
             $table->dropForeign('transaksis_produk_id_foreign');
         });

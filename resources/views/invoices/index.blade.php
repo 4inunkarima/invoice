@@ -1,23 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h3 class="card-title">Manajemen Invoice</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {!! session('success') !!}
-                            </div>
-                        @endif
+<ol class="breadcrumb">
+        <li class="breadcrumb-item">Invoice</li>
+</ol>
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+             @include('flash::message')
+             <div class="row">
+                 <div class="col-lg-12">
+                <div class="card">                    
+                    
                         <div class="card-header">
                              <i class="fa fa-align-justify"></i>
                              Invoice
@@ -69,7 +62,7 @@
                         </table>
                         <div class="float-right">
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

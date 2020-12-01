@@ -31,8 +31,6 @@ class Invoice extends Model
     public $fillable = [
         'id',
         'customer_id',
-        'status',
-        'note',
         'total'
     ];
 
@@ -44,8 +42,6 @@ class Invoice extends Model
     protected $casts = [
         'id' => 'integer',
         'customer_id' => 'string',
-        // 'tanggal_invoice' => 'date',
-        'status' => 'string',
         'note' => 'string',
         'total' => 'integer'
     ];

@@ -157,7 +157,7 @@ class InvoiceController extends AppBaseController
 
     public function hapus($id)
     {
-        $detail=Invoice_detail::find($id)->first();
+        $detail=Invoice_detail::find($id);
         $detail->delete();
         return redirect()->back()->with(['success'=>'Produk berhasil dihapus.']);
     }

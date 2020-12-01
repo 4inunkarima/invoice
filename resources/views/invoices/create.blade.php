@@ -23,25 +23,6 @@
                                     </div>
                                     <img src="https://www.limakode.com/wp-content/uploads/2020/03/5KODE1-small.png" class="ml-3" alt="...">
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Invoice No.</label>
-                                        <div class="input-group mb-2">
-                                            <div class="input-group-prepend">
-                                            <div class="input-group-text">#{{$invoice->id }}</div>
-                                            </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="{{$invoice->customer->nama}}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Language</label>
-                                    <div class="input-group mb-2">
-                                            <div class="input-group-prepend">
-                                            </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="{{$invoice->customer->bahasa}}">
-                                    </div>
-                                    </div>
-                                </div>
                                 <hr />
                                 <form>
                                 <tr class="information">
@@ -50,12 +31,13 @@
                         <tr>
                             <td>
                                 <strong>PENERIMA</strong><br>
-                                <!-- Nama: {{ $invoice->customer->nama }}<br> -->
-                                Alamat: {{ $invoice->customer->alamat }}<br>
-                                Kota: {{$invoice->customer->kota}}<br>
-                                Kode Pos: {{$invoice->customer->kode_pos}}<br>
-                                Telephone: {{ $invoice->customer->telepon }}<br>
-                                Email: {{ $invoice->customer->email }}<br>
+                                ID Invoice: {{$invoice->id }} <br>
+                                Nama: {{ $invoice->customer->nama }} <br>
+                                Alamat: {{ $invoice->customer->alamat }} <br>
+                                Kota: {{$invoice->customer->kota}} <br>
+                                Kode Pos: {{$invoice->customer->kode_pos}} <br>
+                                Telephone: {{ $invoice->customer->telepon }} <br>
+                                Email: {{ $invoice->customer->email }} <br>
                                 Organisasi: {{$invoice->customer->organisasi}}
                             </td>
                             
