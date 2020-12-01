@@ -56,6 +56,7 @@
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button class="btn btn-danger btn-sm">Hapus</button>
                                             </form>
+                                            <a href="{{ url('transaksi/'.$tamp->id) }}" class="btn btn-warning btn-sm" id="edit">Edit</a>
                                         </td>
                                     </tr>
                                 @empty

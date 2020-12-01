@@ -79,7 +79,7 @@ class Invoice extends Model
         return $this->hasMany(Invoice_detail::class);
     }
 
-    public function totalin()
+    public function totalins()
     {
         return $this->belongsTo(Transaksi::class);
     }

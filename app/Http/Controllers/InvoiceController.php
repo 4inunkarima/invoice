@@ -14,6 +14,7 @@ use App\Models\Produk;
 use PDF;
 use Flash;
 use Response;
+use DB;
 
 class InvoiceController extends AppBaseController
 {
@@ -34,7 +35,7 @@ class InvoiceController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $invoice  = Invoice::with(['customer', 'detail'])->orderBy('id', 'ASC');
+        $invoice  = Invoice::with(['customer', 'detail'])->orderBy('id', 'ASC')->paginate(10);
         return view('invoices.index', compact('invoice'));
     }
 
@@ -73,7 +74,7 @@ class InvoiceController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
+    public function add($id)
     {
         $invoice = Invoice::with(['customer','detail','detail.produk'])->find($id);
         $produks = Produk::orderBy('nama_produk','ASC')->get();
@@ -145,7 +146,6 @@ class InvoiceController extends AppBaseController
                     'invoice_id'=>$invoice->id,
                     'produk_id'=>$request->produk_id,
                     'harga_produk'=>$produk->harga_produk,
-                    //'due_date'=>$invoice->due_date,
                     'qty'=>$request->qty
                 ]);
             }
@@ -183,5 +183,14 @@ class InvoiceController extends AppBaseController
         $invoice=Invoice::with(['customer','detail','detail.produk'])->find($id);
         $pdf=PDF::loadview('invoices.print',compact('invoice'))->setPaper('a4','landscape');
         return $pdf->stream('my.pdf',array('Attachment'=>0));
+    }
+
+    public function loadData(Request $request)
+    {
+        if ($request->has('q')) {
+            $cari = $request->q;
+            $data = DB::table('customers')->select('id', 'email','alamat')->where('email','alamat', 'LIKE', '%$cari%')->get();
+            return response()->json($data);
+        }
     }
 }

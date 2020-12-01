@@ -82,7 +82,7 @@ class TransaksiController extends AppBaseController
     public function naik_status($id){
         try {
             $transaksi = Transaksi::find($id);
-            $id_status = $transaksi->kode_pemnbayaran;
+            $id_status = $transaksi->kode_pembayaran;
             $urutan_status = $transaksi->pembayarans->urutan;
  
             $urutan_baru = $urutan_status + 1;
@@ -131,12 +131,12 @@ class TransaksiController extends AppBaseController
      */
     public function edit($id)
     {
-        $trans = Transaksi::find($id);
+        $tamp = Transaksi::find($id);
         $title = "Edit Transaksi";
-        $kode_invoice = Invoice::orderBy('id','ASC')->get();
+        $kode_invoice = Invoice::orderBy('id')->get();
         $kode_pembayaran = status_pembayaran::orderBy('nama_status')->get();
         
-        return view('transaksis.edit', compact('title','kode_invoice', 'kode_pembayaran', 'trans'));
+        return view('transaksis.edit', compact('title','kode_invoice', 'kode_pembayaran', 'tamp'));
     }
 
     /**
@@ -150,7 +150,7 @@ class TransaksiController extends AppBaseController
     public function update($id, Request $request)
     {
         $this->validate($request,[
-            'kode_invoices'=>'required',
+            'kode_invoice'=>'required',
             'kode_pembayaran'=>'required',
             'batas_pembayaran'=>'required',
             'deskripsi_transaksi'=>'required',
@@ -158,7 +158,7 @@ class TransaksiController extends AppBaseController
         ]);
 
 
-        $data['kode_invoices']=$request->kode_invoices;
+        $data['kode_invoice']=$request->kode_invoice;
         $data['kode_pembayaran']=$request->kode_pembayaran;
         $data['batas_pembayaran']=$request->batas_pembayaran;
         $data['deskripsi_transaksi']=$request->deskripsi_transaksi;
@@ -168,7 +168,7 @@ class TransaksiController extends AppBaseController
  
         \Session::flash('sukses','Transaksi berhasil diupdate');
  
-        return redirect('transaksi-pesanan');
+        return redirect('/show');
 
     }
 

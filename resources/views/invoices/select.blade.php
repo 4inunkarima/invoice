@@ -25,7 +25,31 @@
                                     <option value="{{ $customer->id }}">{{ $customer->nama }} - {{ $customer->email }} - {{$customer->alamat}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                                </div>
+                            <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+                            <script type="text/javascript">
+                            $('.new').select2({
+                                placeholder: 'Cari...',
+                                ajax: {
+                                url: '/new',
+                                dataType: 'json',
+                                delay: 250,
+                                processResults: function (data) {
+                                    return {
+                                    results:  $.map(data, function (item) {
+                                        return {
+                                        text: item.email,
+                                        id: item.id
+                                        }
+                                    })
+                                    };
+                                },
+                                cache: true
+                                }
+                            });
+                            </script> -->
+                            
                             <div class="form-group">
                                 <button class="btn btn-primary btn-sm">Buat</button>
                                 <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">Kembali</a>

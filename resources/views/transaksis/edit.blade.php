@@ -18,7 +18,48 @@
                               <strong>Edit Transaksi</strong>
                           </div>
                           <div class="card-body">
+                          <form role="form" method="post" action="{{ url('transaksi/'.$tamp->id) }}">
+                    @csrf
+                    {{ method_field('PUT') }}
+                  <div class="box-body">
+ 
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">ID Invoice</label>
+                      <select class="form-control select2" name="kode_invoice">
+                          @foreach($kode_invoice as $koin)
+                          <option value="{{ $koin->id }}"{{($tamp->kode_invoice == $koin->id ? 'selected':'')}}>{{$koin->id}}</option>
+                          @endforeach
+                      </select>
+                    </div>
 
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Status Pembayaran</label>
+                      <select class="form-control select2" name="kode_pembayaran">
+                          @foreach($kode_pembayaran as $kopem)
+                          <option value="{{ $kopem->id }}">{{ $kopem->pembayaran_id }}-{{$kopem->nama_status}}</option>
+                          @endforeach
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="batas_pembayaran">Batas Pembayaran</label>
+                      <input type="date" class="form-control" name="batas_pembayaran" value="{{$tamp->batas_pembayaran}}">  
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Deskripsi Transaksi</label>
+                      <input type="text" name="deskripsi_transaksi" class="form-control" value="{{ $tamp->deskripsi_transaksi }}">
+                    </div>
+
+
+                  </div>
+                  <!-- /.box-body -->
+     
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <!-- <a href="{{ route('transaksi.index') }}" class="btn btn-primary">Kembali</a> -->
+                  </div>
+                </form>
                             </div>
                         </div>
                     </div>

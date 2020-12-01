@@ -30,7 +30,7 @@
                                     <th scope="col">Nama Lengkap</th>
                                     <th scope="col">No Telp</th>
                                     <th scope="col">Total Item</th>
-                                    <th scope="col">Tanggal dan Waktu</th>
+                                    <th scope="col">Tanggal</th>
                                     <!-- <th>Batas Pembayaran</th> -->
                                     <th scope="col">Subtotal</th>
                                     <th scope="col">Pajak</th>
@@ -68,7 +68,6 @@
                             </tbody>
                         </table>
                         <div class="float-right">
-
                         </div>
                     </div>
                 </div>

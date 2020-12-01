@@ -18,117 +18,66 @@
                                 <strong>Create Invoice</strong>
                             </div>
                             <div class="card-body">
-                                <form class="form-inline">
-                                    <div class="form-group mb-2">
-                                        <label for="staticEmail2" class="sr-only">Email</label>
-                                        <input type="text" readonly class="form-control-plaintext" font-size="6px" id="staticEmail2" value="office@email.com">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mb-2">Another Email</button>
-                                </form>
                                 <div class="media">
                                     <div class="media-body">
-                                        <!-- <h5 class="mt-0 mb-1 float-right">logo</h5> -->
                                     </div>
                                     <img src="https://www.limakode.com/wp-content/uploads/2020/03/5KODE1-small.png" class="ml-3" alt="...">
-                                </div>
-                                <div class="form-group col-mb-4">
-                                    <label for="exampleFormControlTextarea1">Description</label>
-                                    <textarea class="form-control col-md-8" id="exampleFormControlTextarea1" rows="4"></textarea>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                     <label for="inputEmail4">Invoice No.</label>
                                         <div class="input-group mb-2">
                                             <div class="input-group-prepend">
-                                            <div class="input-group-text">#</div>
+                                            <div class="input-group-text">#{{$invoice->id }}</div>
                                             </div>
-                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Number-Invoice">
+                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="{{$invoice->customer->nama}}">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
                                     <label for="inputPassword4">Language</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <option>Indonesian</option>
-                                        <option>English</option>
-                                    </select>
+                                    <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                            </div>
+                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="{{$invoice->customer->bahasa}}">
                                     </div>
-                                    <div class="form-group col-md-2">
-                                    <label for="inputEmail4">Currency</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <option>Indonesian</option>
-                                        <option>English</option>
-                                    </select>
                                     </div>
                                 </div>
                                 <hr />
                                 <form>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                        <label for="Address">From</label>
-                                        <input type="text" class="form-control-plaintext" id="staticEmail2" value="Kantor LALALA">  
-                                        <p>Jl. Petemon IV No.32-A, RT 014/RW 008<br/>Kel. Petemon, Kec. Sawahan, Kota Surabaya<br/>Jawa Timur, 60252<br/>0839-0868-2951</p>
-                                        <br/>
-                                        <br/>
-                                        
-                                            <h4>Pelanggan: </h4>
-                                            <p>Nama: {{ $invoice->customer->nama }}<br>
-                                            Alamat: {{ $invoice->customer->alamat }}<br>
-                                            Kota: {{$invoice->customer->kota}}<br>
-                                            Kode Pos: {{$invoice->customer->kode_pos}}<br>
-                                            Telephone: {{ $invoice->customer->telepon }}<br>
-                                            Email: {{ $invoice->customer->email }}<br>
-                                            Organisasi: {{$invoice->customer->organisasi}}
-                                            </p>
-                                        
-                                        </div>
-                                        <div class="col">
-                                        
-                                            <label for="Address">Date</label>
-                                            <input type="text" class="form-control" placeholder="Add Payment Date..">
-                                            <br/>
-                                            <label for="Address">Purchase Order Number</label>
-                                            <input type="text" class="form-control" placeholder="Order Number">
-                                        </form>
-                                        </div>
-                                    </div>
+                                <tr class="information">
+                <td colspan="6">
+                    <table>
+                        <tr>
+                            <td>
+                                <strong>PENERIMA</strong><br>
+                                <!-- Nama: {{ $invoice->customer->nama }}<br> -->
+                                Alamat: {{ $invoice->customer->alamat }}<br>
+                                Kota: {{$invoice->customer->kota}}<br>
+                                Kode Pos: {{$invoice->customer->kode_pos}}<br>
+                                Telephone: {{ $invoice->customer->telepon }}<br>
+                                Email: {{ $invoice->customer->email }}<br>
+                                Organisasi: {{$invoice->customer->organisasi}}
+                            </td>
+                            
+                            <div class="form-group float-right col-md-3">
+                                <strong>PENGIRIM</strong><br>
+                                Daengweb<br>
+                                085343966997<br>
+                                Jl Sultan Hasanuddin<br>
+                                Somba Opu, Kab Gowa<br>
+                                Sulawesi Selatan
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
                                 </form>
                                 <hr /> 
-                                <div class="totals col-md-6 float-right">
-                                    <div class="totals_container">
-										<ul class="statement_amount_container">
-                                            <li class="statement_amount">
-                                                <div class="col">Sub Total</div>
-                                                <input class="col no_input" type="text" disabled="" data-format-number="precision" value="Rp. {{ number_format($invoice->total) }}" data-calculation="subtotal">
-                                            </li>
-                                        </ul>                                                         
-                                        <div id="tax_discount_shipping_wrapper">
-                                        </div>
-                                        <div id="item_tax_discount_shipping_wrapper">
-                                        </div>
-                                        <ul class="statement_amount_container">
-                                        <li class="statement_amount no_border">
-                                            <div class="col"><strong>Biaya (<span data-currency="code">Tax</span>)</strong></div>
-                                            <strong><input class="col no_input bold" type="text" disabled="" data-format-number="precision" data-calculation="total" value="Rp. {{ number_format($invoice->tax) }}"></strong>
-                                        </li>
-                                        </ul>
-                                        <!-- <hr/> -->
-                                        <ul class="statement_amount_container total_due draft">
-                                        <li class="statement_amount">
-                                            <div class="input-group border border-secondary">
-                                                    <div class="input-group-prepend">
-                                                    <div class="input-group-text">Total Harga</div>
-                                                    </div>
-                                                    <input type="text" class="form-control" id="inlineFormInputGroup" value="Rp. {{ number_format($invoice->total_harga) }}">
-                                            </div>
-                                        </li>
-                                        </ul>
-                                    </div>
-                                </div>
                                 <hr />
                             <div class="row">
                             <div class="col-md-12 mt-3">
+                            <h3>Daftar Produk</h3>
+                            <br/>
                                 <form action="{{ route('invoice.update', ['id' => $invoice->id]) }}" method="post">
                                 @csrf
                                 <table class="table table-hover">
@@ -152,7 +101,7 @@
                                             <td>Rp {{ number_format($detail->harga_produk) }}</td>
                                             <td>Rp {{ $detail->subtotal }}</td>
                                             <td>
-                                            <a href = "{{ route('invoice.hapus', $detail->id) }}" class="btn btn-danger">Hapus</a>
+                                            <a href="{{ route('invoice.hapus', $detail->id) }}" class="btn btn-danger btn-sm">Hapus</ax>
                                         </td>
                                         </tr>
                                         @empty
@@ -185,14 +134,37 @@
                                 </form>
                             </div>
                             </div>
-                            <br/>
-                                <div class="form-group">
-                                    <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">Kembali</a>
+                            <div class="totals col-md-6 float-right">
+                                    <div class="totals_container">										
+                                        <ul class="">
+                                            <li class="">
+                                                <div class="col"><strong>Sub Total</strong></div>
+                                                <input class="col no_input" type="text" disabled="" data-format-number="precision" value="Rp. {{ number_format($invoice->total) }}" data-calculation="subtotal">
+                                            </li>
+                                        </ul> 
+                                        <ul class="statement_amount_container">
+                                            <li class="statement_amount">
+                                            <div class="col"><strong>Biaya (<span data-currency="code">Tax</span>)</strong></div>
+                                            <strong><input class="col no_input bold" type="text" disabled="" data-format-number="precision" data-calculation="total" value="Rp. {{ number_format($invoice->tax) }}"></strong>
+                                        </li>
+                                        </ul>
+                                        <hr/>
+                                        <ul class="statement_amount_container total_due draft">
+                                        <li class="statement_amount">
+                                            <div class="input-group border border-secondary">
+                                                    <div class="input-group-prepend">
+                                                    <div class="input-group-text"><strong>Total Harga</strong></div>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="inlineFormInputGroup" value="Rp. {{ number_format($invoice->total_harga) }}">
+                                            </div>
+                                        </li>
+                                        </ul>
+                                        <br/>
+                                <div class="form-group float-right">
+                                    <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">Kembali Ke Index</a>
                                 </div>
-                                <br/>
-                                <br/>
-                                <!-- <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Send Invoice</a>
-                                <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Draft</a> -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
