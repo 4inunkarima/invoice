@@ -30,15 +30,15 @@
                     <table>
                         <tr>
                             <td>
-                                <strong>PENERIMA</strong><br>
-                                ID Invoice: {{$invoice->id }} <br>
-                                Nama: {{ $invoice->customer->nama }} <br>
-                                Alamat: {{ $invoice->customer->alamat }} <br>
-                                Kota: {{$invoice->customer->kota}} <br>
-                                Kode Pos: {{$invoice->customer->kode_pos}} <br>
-                                Telephone: {{ $invoice->customer->telepon }} <br>
-                                Email: {{ $invoice->customer->email }} <br>
-                                Organisasi: {{$invoice->customer->organisasi}}
+                                <strong>{{ __('invoice.receiver') }}</strong><br>
+                                {{ __('invoice.id_invoice') }} {{$invoice->id }} <br>
+                                {{ __('invoice.nama_customer') }} {{ $invoice->customer->nama }} <br>
+                                {{ __('invoice.address') }} {{ $invoice->customer->alamat }} <br>
+                                {{ __('invoice.city') }} {{$invoice->customer->kota}} <br>
+                                {{ __('invoice.postal_code') }} {{$invoice->customer->kode_pos}} <br>
+                                {{ __('invoice.telepon') }} {{ $invoice->customer->telepon }} <br>
+                                {{ __('invoice.email') }} {{ $invoice->customer->email }} <br>
+                                {{ __('invoice.organisasi') }} {{$invoice->customer->organisasi}}
                             </td>
                             
                             <div class="form-group float-right col-md-3">

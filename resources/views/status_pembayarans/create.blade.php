@@ -18,11 +18,21 @@
                                 <strong>{{ __('status.create_pembayaran')}}</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'statusPembayarans.store']) !!}
-
-                                   @include('status_pembayarans.fields')
-
-                                {!! Form::close() !!}
+                                <form method="post" action="{{route('statusPembayarans.store')}}">
+                                @csrf
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <label for="nama_status">{{ __('status.status_name') }}</label>
+                                        <input type="text" name="nama_status" class="form-control" placeholder="{{ __('status.status_name') }}" required>
+                                        <br/>
+                                        <label for="urutan">{{ __('status.sequence') }}</label>
+                                        <input type="text" name="urutan" class="form-control" placeholder="{{ __('status.sequence') }}" required>
+                                        <br/>
+                                        <button type="submit" class="btn btn-primary btn active" role="button" aria-pressed="true">{{ __('status.save') }}</button>
+                                        <a href="{{ route('produks.index') }}" class="btn btn-secondary">{{ __('status.cancel') }}</a>
+                                        </div>
+                                    </div>    
+                                </form> 
                             </div>
                         </div>
                     </div>

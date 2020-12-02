@@ -10,6 +10,8 @@
     'setting' => 'Setting',
     'switch_language' => 'Language',
     'english' => 'English',
-    'indonesian' => 'Indonesian'
+    'indonesian' => 'Indonesian',
+    'payment_status' => 'Payment Status'
+
 
 ];

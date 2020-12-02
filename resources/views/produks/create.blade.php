@@ -14,7 +14,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <i class="fa fa-plus-square-o fa-lg"></i>
+                                <i class="fa fa-plus-square-o fa-lg"></i> 
                                 <strong>{{ __('produk.create_produk') }}</strong>
                             </div>
                             <div class="card-body">
@@ -70,7 +70,7 @@
                                     <a href="{{ route('produks.index') }}" class="btn btn-secondary">{{ __('produk.cancel') }}</a>
                                 </form>
                             </div>                            
-                        </div>
+                        </div> 
                     </div>
                 </div>
            </div>

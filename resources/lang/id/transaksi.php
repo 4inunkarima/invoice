@@ -27,7 +27,7 @@ return
    'kd_pembayaran' => 'Kode Pembayaran',
    
 
-   //Button
+   //Button 
    'submit' => 'Simpan'
 
 

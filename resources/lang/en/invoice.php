@@ -11,7 +11,7 @@ return
     'name' => 'Full Name',
     'teleponn' => 'Phone Number',
     'item_total' => 'Item Total',
-    'date' => 'Date',
+    'date' => 'Date', 
     'subtotal' => 'Subtotal',
     'tax' => 'Tax',
     'total' => 'Total',
@@ -43,7 +43,7 @@ return
     'organisasi' => 'Organization :',
 
     //Pengirim
-    'sender' => 'Sender',
+    'sender' => 'SENDER',
 
 
     //Daftar Produk

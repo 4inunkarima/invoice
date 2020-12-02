@@ -2,7 +2,7 @@
 
 @section('content')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">Report</li>
+        <li class="breadcrumb-item">{{ __('laporan.report') }}</li>
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -12,7 +12,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>Laporan</strong>
+                                <strong>{{ __('laporan.report') }}</strong>
                             </div>
                             <div class="card-body">
                                 <section class="content" id="dw">
@@ -28,20 +28,20 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Tanggal Awal</label>
+                                                <label for="">{{ __('laporan.start_date') }}</label>
                                                 <input type="date" name="tanggal awal" 
                                                     class="form-control"
                                                     id="tgl_awal">
                                             </div>
                                             <div class="form-group">
-                                                <label for="">Tanggal Akhir</label>
+                                                <label for="">{{ __('laporan.end_date') }}</label>
                                                 <input type="date" name="tanggal akhir" 
                                                     class="form-control"
                                                     id="tgl_akhir">
                                             </div>
                                             <div class="form-group">
                                                 <a href="" onclick="this.href='/cetak-laporan/'+ document.getElementById('tgl_awal').value + '/' + document.getElementById('tgl_akhir').value" 
-                                                target="_blank" class="btn btn-primary col-md-12">Cetak Laporan</a>
+                                                target="_blank" class="btn btn-primary col-md-12">{{ __('laporan.print') }}</a>
                                             </div>
                                         </div>
                                         <!-- <div class="col-md-6">

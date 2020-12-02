@@ -10,6 +10,7 @@
     'setting' => 'Pengaturan',
     'switch_language' => 'Pilih Bahasa',
     'english' => 'Bahasa Inggris',
-    'indonesian' => 'Bahasa Indonesia'
+    'indonesian' => 'Bahasa Indonesia',
+    'payment_status' => 'Status Pembayaran'
 
 ];

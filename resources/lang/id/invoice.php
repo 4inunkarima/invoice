@@ -36,14 +36,14 @@ return
     'id_invoice' => 'Id Faktur :',
     'nama_customer' => 'Nama :',
     'address' => 'Alamat:',
-    'city' => 'Kota:',
+    'city' => 'Kota:', 
     'postal_code' => 'Kode Pos:',
     'telepon' => 'Telepon:',
     'email' => 'Email:',
     'organisasi' => 'Organisasi:',
 
     //Pengirim
-    'sender' => 'Sender',
+    'sender' => 'PENGIRIM',
 
 
     //Daftar Produk

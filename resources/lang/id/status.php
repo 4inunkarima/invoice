@@ -4,6 +4,7 @@ return
 [
     //Head
     'st_pembayaran' => 'Status Pembayaran',
+    'detail' => 'Detail',
 
     //Create
     'create' => 'Tambah',
@@ -11,7 +12,10 @@ return
 
     'status_name' => 'Nama Status',
     'sequence' => 'Urutan',
+    'created_at' => 'Dibuat Pada',
+    'updated_at' => 'Diperbarui Pada',
     'save' => 'Simpan', //button
-    'cancel' => 'Keluar' //button
+    'cancel' => 'Keluar', //button
+    'back' => 'Kembali'
 
-];
+]; 

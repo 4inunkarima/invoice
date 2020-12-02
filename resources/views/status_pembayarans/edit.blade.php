@@ -20,7 +20,7 @@
                           <div class="card-body">
                               {!! Form::model($statusPembayaran, ['route' => ['statusPembayarans.update', $statusPembayaran->id], 'method' => 'patch']) !!}
 
-                              @include('status_pembayarans.fields')
+                              @include('status_pembayarans.edit_fields')
 
                               {!! Form::close() !!}
                             </div>

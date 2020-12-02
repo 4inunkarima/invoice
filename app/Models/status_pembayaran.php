@@ -8,7 +8,7 @@ use App\Models\status_pembayaran;
 use App\Models\Report;
 
 /**
- * Class status_pembayaran
+ * Class status_pembayaran 
  * @package App\Models
  * @version November 19, 2020, 5:13 am UTC
  *

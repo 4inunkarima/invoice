@@ -20,12 +20,12 @@
                                 <tr>
                                     <th scope="col">{{ __('transaksi.id') }}</th>
                                     <!-- <th scope="col">Nama Lengkap</th> -->
-                                    <th scope="col">Tanggal Buat Invoice</th>
-                                    <th scope="col">Batas Pembayaran</th>
-                                    <th scope="col">Status Pembayaran</th>
-                                    <th scope="col">Deskripsi Transaksi</th>
-                                    <th scope="col">Ubah Status</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">{{ __('transaksi.tgl_buat_invoice') }}</th>
+                                    <th scope="col">{{ __('transaksi.bts_pembayaran') }}</th>
+                                    <th scope="col">{{ __('transaksi.status_pembayaran') }}</th>
+                                    <th scope="col">{{ __('transaksi.description') }}</th>
+                                    <th scope="col">{{ __('transaksi.status') }}</th>
+                                    <th scope="col">{{ __('transaksi.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,8 +47,8 @@
                                             <form action="{{ route('transaksi.destroy', $tamp->id) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                                <a href="{{ url('transaksi/'.$tamp->id) }}" class="btn btn-warning btn-sm" id="edit">Edit</a>
+                                                <button class="btn btn-danger btn-sm">{{ __('transaksi.delete') }}</button>
+                                                <a href="{{ url('transaksi/'.$tamp->id) }}" class="btn btn-warning btn-sm" id="edit">{{ __('transaksi.edit') }}</a>
                                             </form>
 
                                         </td>

@@ -5,7 +5,7 @@ return
    //Head
    'transaksi' => 'Transaction',
    //
-   
+    
    'id' => 'Invoice Id',
    'tgl_buat_invoice' => 'Date Invoice',
    'bts_pembayaran' => 'Payment Deadline',
