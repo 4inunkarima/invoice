@@ -56,6 +56,39 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
+                                <span class="input-group-text">*</span>
+                            </div>
+                            <input type="text" class="form-control {{ $errors->has('perusahaan')?'is-invalid':'' }}" name="perusahaan" value="{{ old('perusahaan') }}" placeholder="Perusahaan">
+                            @if ($errors->has('perusahaan'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('perusahaan') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">*</span>
+                            </div>
+                            <input type="text" class="form-control {{ $errors->has('alamat')?'is-invalid':'' }}" name="alamat" value="{{ old('alamat') }}" placeholder="Alamat">
+                            @if ($errors->has('alamat'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('alamat') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">#</span>
+                            </div>
+                            <input type="number" class="form-control {{ $errors->has('telephon')?'is-invalid':'' }}" name="telephon" value="{{ old('telephon') }}" placeholder="Telephon">
+                            @if ($errors->has('telephon'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('telephon') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
                               <span class="input-group-text">
                                 <i class="icon-lock"></i>
                               </span>

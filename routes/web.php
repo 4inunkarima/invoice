@@ -66,3 +66,6 @@ Route::get('/cetak-laporan/{tglawal}/{tglakhir}','ReportController@cetak')->name
 //Route Bahasa
 Route::get('lang/{language}', 'LocalizationController@switch')->name('localization.switch');
 
+Route::get('/user',function(){
+    return Auth::user();
+});

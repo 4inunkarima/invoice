@@ -43,11 +43,11 @@
                             
                             <div class="form-group float-right col-md-3">
                                 <strong>PENGIRIM</strong><br>
-                                Daengweb<br>
-                                085343966997<br>
-                                Jl Sultan Hasanuddin<br>
-                                Somba Opu, Kab Gowa<br>
-                                Sulawesi Selatan
+                                {{ Auth::user()->name }}<br>
+                                {{ Auth::user()->email }}<br>
+                                {{ Auth::user()->perusahaan }}<br>
+                                {{ Auth::user()->alamat }}<br>
+                                {{ Auth::user()->telephon }}
                             </td>
                         </tr>
                     </table>

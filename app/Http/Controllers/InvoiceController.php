@@ -11,6 +11,7 @@ use App\Models\Customer;
 use App\Models\Invoice;
 use App\Models\Invoice_detail;
 use App\Models\Produk;
+use App\User;
 use PDF;
 use Flash;
 use Response;
@@ -38,6 +39,8 @@ class InvoiceController extends AppBaseController
         $invoice  = Invoice::with(['customer', 'detail'])->orderBy('id', 'ASC')->paginate(10);
         return view('invoices.index', compact('invoice'));
     }
+
+
 
     /**
      * Show the form for creating a new Invoice.
@@ -78,7 +81,8 @@ class InvoiceController extends AppBaseController
     {
         $invoice = Invoice::with(['customer','detail','detail.produk'])->find($id);
         $produks = Produk::orderBy('nama_produk','ASC')->get();
-        return view('invoices.create',compact('invoice','produks'));
+        $user = User::orderBy('name','ASC')->get();
+        return view('invoices.create',compact('invoice','produks','user'));
     }
     /**
      * Store a newly created Invoice in storage.
