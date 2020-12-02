@@ -41,11 +41,18 @@
   </a>
   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
     <a class="dropdown-item" href="{{ route('statusPembayarans.index') }}">Status Pembayaran</a>
-    <a class="dropdown-item" href="#">Bahasa</a>
+    <a class="dropdown-item" class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+            <!-- <i class="nav-icon icon-bell"></i> -->
+            <span>Bahasa</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item <?php echo e(app()->getLocale() == 'en' ? 'active' : ''); ?>" href="{{ route('localization.switch', 'en') }}" >English</a>
+            <a class="dropdown-item <?php echo e(app()->getLocale() == 'id' ? 'active' : ''); ?>" href="{{ route('localization.switch', 'id') }}" >Indonesia</a>
+    </div>
     <a class="dropdown-item" href="#">One more item</a>
   </div>
 </li>
-<li class="nav-item dropdown">
+<!-- <li class="nav-item dropdown">
     <a class="nav-link" class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
             <i class="nav-icon icon-bell"></i>
             <span>{{ __('menu.switch_language') }}</span>
@@ -54,4 +61,4 @@
             <a class="dropdown-item <?php echo e(app()->getLocale() == 'en' ? 'active' : ''); ?>" href="{{ route('localization.switch', 'en') }}" >English</a>
             <a class="dropdown-item <?php echo e(app()->getLocale() == 'id' ? 'active' : ''); ?>" href="{{ route('localization.switch', 'id') }}" >Indonesia</a>
     </div>
-</li>
+</li> -->
