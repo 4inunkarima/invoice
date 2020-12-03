@@ -150,33 +150,20 @@
                 </td>
             </tr>
 
-            <tr class="heading">
+            <tr class="">
                 <td colspan="6">
                     <table >
-                    <thead >
                         <tr class="heading">
-                        <th scope="col-md-1">#</th>
-                        <th scope="col-md-3">Deskripsi</th>
-                        <th scope="col-md-2">Satuan</th>
-                        <th scope="col-md-2">Harga</th>
-                        <th scope="col-md-2">Jumlah</th>
+                        <td  scope="col-md-4">Barang</td>
+                        <td scope="col-md-2">Jumlah Harga</td>
                         </tr>
-                    </thead>
                     </table>
-
                 </td>
             </tr>
 
             <tr class="top justify">
                 <td colspan="6">
-                    <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>MarkUUUUUU</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
+                <table >
                     @foreach ($invoice->detail as $row)
                     <tr class="item">
                         <td>
@@ -186,15 +173,14 @@
                         <td>Rp {{ number_format($row->harga_produk * $row->qty) }}</td>
                     </tr>
                     @endforeach
-                    </tbody>
+                    </table>
                 </td>
             </tr>
-        <br/>
 
-            <table>
                 <tr class="top justify">
-                    <td colspan="6">
-                    <tr colspan="6">
+                    <td colspan="4">
+                    <table>
+                    <tr colspan="4">
                         <th >Subtotal</th>
                         <td>Rp {{ number_format($invoice->total) }}</td>
                     </tr>
@@ -207,9 +193,9 @@
                         <th >Total</th>
                         <td>Rp {{ number_format($invoice->total_harga) }}</td>
                     </tr>
+                    </table>
                     </td>
                 </tr>
-            </table>
 
         </table>
     </div>
