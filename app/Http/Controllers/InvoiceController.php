@@ -12,6 +12,7 @@ use App\Models\Invoice;
 use App\Models\Invoice_detail;
 use App\Models\Produk;
 use App\User;
+use App\Models\Transaksi;
 use PDF;
 use Flash;
 use Response;
@@ -36,7 +37,7 @@ class InvoiceController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $invoice  = Invoice::with(['customer', 'detail'])->orderBy('id', 'ASC')->paginate(10);
+        $invoice  = Invoice::with(['customer', 'detail'])->orderBy('id', 'ASC')->get();
         return view('invoices.index', compact('invoice'));
     }
 
@@ -159,6 +160,39 @@ class InvoiceController extends AppBaseController
             }
         }    
 
+
+    public function ubah($id)
+    {
+        $row = Invoice::find($id);
+        $invoice_detail = Invoice_detail::orderBy('id')->get();
+        $produk = Produk::orderBy('id')->get();
+            
+        return view('invoices.ubah', compact('invoice_detail', 'produk', 'row'));
+    }
+
+    public function ganti($id, Request $request)
+    {
+        $this->validate($request,[
+            'kode_invoice'=>'required',
+            'kode_pembayaran'=>'required',
+            'batas_pembayaran'=>'required',
+            'deskripsi_transaksi'=>'required',
+            
+        ]);
+
+        $data['kode_invoice']=$request->kode_invoice;
+        $data['kode_pembayaran']=$request->kode_pembayaran;
+        $data['batas_pembayaran']=$request->batas_pembayaran;
+        $data['deskripsi_transaksi']=$request->deskripsi_transaksi;
+        $data['updated_at']=date('Y-m-d H:i:s');
+
+        Transaksi::where('id',$id)->update($data);
+ 
+        \Session::flash('sukses','Transaksi berhasil diupdate');
+ 
+        return redirect('/show');
+    }
+
     public function hapus($id)
     {
         $detail=Invoice_detail::find($id);
@@ -179,7 +213,7 @@ class InvoiceController extends AppBaseController
     {
         $invoice = Invoice::find($id);
         $invoice->delete();
-        return redirect()->back()->with(['success' => 'Data telah dihapus']);
+        return redirect(route('invoices.index'))->with(['success' => 'Data telah dihapus']);
     }
 
     public function generateInvoice($id)

@@ -33,12 +33,10 @@
                                 <strong>{{ __('invoice.receiver') }}</strong><br>
                                 {{ __('invoice.id_invoice') }} {{$invoice->id }} <br>
                                 {{ __('invoice.nama_customer') }} {{ $invoice->customer->nama }} <br>
+                                {{ __('invoice.organisasi') }} {{$invoice->customer->organisasi}}
                                 {{ __('invoice.address') }} {{ $invoice->customer->alamat }} <br>
-                                {{ __('invoice.city') }} {{$invoice->customer->kota}} <br>
-                                {{ __('invoice.postal_code') }} {{$invoice->customer->kode_pos}} <br>
                                 {{ __('invoice.telepon') }} {{ $invoice->customer->telepon }} <br>
                                 {{ __('invoice.email') }} {{ $invoice->customer->email }} <br>
-                                {{ __('invoice.organisasi') }} {{$invoice->customer->organisasi}}
                             </td>
                             
                             <div class="form-group float-right col-md-3">
@@ -143,7 +141,12 @@
                                         </ul>
                                         <br/>
                                 <div class="form-group float-right">
-                                    <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">{{ __('invoice.back_index') }}</a>
+                                <form action="{{ route('invoice.destroy', $invoice->id) }}" method="POST">
+                                                @csrf
+                                                <a href="{{ route('invoices.index') }}" class="btn btn-primary btn-sm">{{ __('invoice.back_index') }}</a>
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button class="btn btn-danger btn-sm">Delete Invoice</button>
+                                    </form>
                                 </div>
                                     </div>
                                 </div>

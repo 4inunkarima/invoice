@@ -40,10 +40,12 @@ Route::group(['prefix'=>'invoice'],function(){
     Route::post('/', 'InvoiceController@index')->name('invoice.index');
     Route::post('/', 'InvoiceController@save')->name('invoice.store');
     Route::get('/{id}','InvoiceController@add')->name('invoice.create');
-    // Route::get('/{$id}','InvoiceController@ubah')->name('invoice.edit');
+    Route::get('invoices/{id}','InvoiceController@ubah')->name('invoice.ubah');
+    // Route::put('invoices/{id}','TransaksiController@ganti')->name('transaksi.update');
     Route::put('/{id}','InvoiceController@update')->name('invoice.update');
     Route::get('/{id}/delete','InvoiceController@hapus')->name('invoice.hapus');
     Route::delete('/{id}/delete', 'InvoiceController@destroy')->name('invoice.destroy');
+    // Route::delete('/{id}/delete', 'invoiceController@cancel')->name('invoice.cancel');
     Route::get('/{id}/print','InvoiceController@generateInvoice')->name('invoice.print');
 });
 
@@ -56,8 +58,6 @@ Route::resource('statusPembayarans', 'status_pembayaranController');
     Route::delete('/{id}/delete', 'TransaksiController@destroy')->name('transaksi.destroy');
     Route::get('transaksi/{id}','TransaksiController@edit')->name('transaksi.edit');
     Route::put('transaksi/{id}','TransaksiController@update')->name('transaksi.update');
-    // Route::put('/{id}','TransaksiController@show')->name('transaksi.show');
-    // Route::delete('/{id}','TransaksiController@delete')->name('transaksi.delete');
     Route::get('naik-status/{id}','TransaksiController@naik_status');
 
 Route::resource('items', 'ItemController');

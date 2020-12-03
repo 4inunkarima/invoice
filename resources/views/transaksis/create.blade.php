@@ -25,7 +25,7 @@
                       <label for="exampleInputEmail1">{{ __('transaksi.kode') }}</label>
                       <select class="form-control select2" name="kode_invoice">
                           @foreach($kode_invoice as $koin)
-                          <option value="{{ $koin->id }}">{{ $koin->id }}-{{ __('customer.customer') }}</option>
+                          <option value="{{ $koin->id }}">{{ $koin->id }}-{{ $koin->customer->nama }}</option>
                           @endforeach
                       </select>
                     </div>

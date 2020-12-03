@@ -36,7 +36,7 @@
                       <label for="exampleInputEmail1">Status Pembayaran</label>
                       <select class="form-control select2" name="kode_pembayaran">
                           @foreach($kode_pembayaran as $kopem)
-                          <option value="{{ $kopem->id }}">{{ $kopem->pembayaran_id }}-{{$kopem->nama_status}}</option>
+                          <option value="{{ $kopem->id }}"{{($tamp->kode_pembayaran == $kopem->id ? 'selected':'')}}>{{ $kopem->pembayaran_id }}-{{$kopem->nama_status}}</option>
                           @endforeach
                       </select>
                     </div>
