@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\status_pembayaran;
+use App\Models\StatusPembayaran;
 use App\Models\Report;
 
 /**
@@ -54,5 +54,10 @@ class status_pembayaran extends Model
     public function transaksi()
     {
         return $this->belongsTo(Transaksi::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Report::class);
     }
 }

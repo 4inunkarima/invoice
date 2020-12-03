@@ -36,7 +36,7 @@ class TransaksiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $transaksi  = Transaksi::with(['totalins', 'pembayarans'])->orderBy('id', 'ASC')->paginate(10);
+        $transaksi  = Transaksi::with(['totalins', 'pembayarans'])->orderBy('id', 'ASC')->get();
         // $tampil = Invoice::orderBy('total','asc')->get();
         // $pembayarans = Status_pembayaran::orderBy('nama_status','asc')->get();
         return view('transaksis.index', compact('transaksi'));

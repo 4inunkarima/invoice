@@ -55,4 +55,10 @@ class Transaksi extends Model
         return $this->belongsTo('App\Models\Report','transaksi_id','id');
     }
 
+    public function status()
+    {
+        return $this->belongsTo(\App\Models\status_pembayaran::class, 'kode_pembayaran');
+    }
+    
+
 }

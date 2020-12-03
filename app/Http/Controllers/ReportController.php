@@ -34,8 +34,7 @@ class ReportController extends AppBaseController
     public function index(Request $request)
     {
         $reports = $this->reportRepository->all();
-
-        return view('reports.index')
+            return view('reports.index')
             ->with('reports', $reports);
     }
 
@@ -159,8 +158,8 @@ class ReportController extends AppBaseController
     }
 
     public function cetak($tglawal, $tglakhir){
-        //dd(["Tanggal Awal : " .$tglawal, "Tanggal Akhir : " .$tglakhir]);
-        $cetakPertanggal = Transaksi::with('trans')->whereBetween('created_at', [$tglawal, $tglakhir])->get();
+        $cetakPertanggal = Transaksi::whereBetween('created_at', [$tglawal, $tglakhir])->get();
+        // dd($cetakPertanggal);
         return view('reports.cetak_Pertanggal', compact('cetakPertanggal'));
     }
 }

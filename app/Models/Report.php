@@ -48,5 +48,10 @@ class Report extends Model
     {
         return $this->hasMany('App\Models\Transaksi','transaksi_id','id');
     }
-    
+
+    public function status()
+    {
+        return $this->hasMany('App\Models\status_pembayaran','nama_status','id');
+    }
+      
 }

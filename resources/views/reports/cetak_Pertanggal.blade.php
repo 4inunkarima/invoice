@@ -16,11 +16,11 @@
             <th>Deskripsi Transaksi</th>
         </tr>
         @foreach ($cetakPertanggal as $print)
-        <tr>
+            <tr align="center">
             <td>{{ $print->kode_invoice }}</td>
             <td>{{ $print->created_at->format('D, d M Y') }}</td>
             <td>{{ $print->batas_pembayaran->format('D, d M Y') }}</td>
-            <td>{{ $print->kode_pembayaran}}</td>
+            <td>{{ $print->status->nama_status }}</td>
             <td>{{ $print->deskripsi_transaksi }}</td>
         </tr>
         @endforeach

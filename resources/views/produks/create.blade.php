@@ -35,11 +35,11 @@
                                         <div class="input-group mb-3">
                                            <input type="text" class="form-control" name="stok" placeholder="{{ __('produk.stock') }}"> 
                                             <div class="input-group-prepend">
-                                            <select id="inputState" class="input-group-text">
+                                            <!-- <select id="inputState" class="input-group-text">
                                                 <option selected>{{ __('produk.choose') }}</option>
                                                 <option>/Pcs</option>
                                                 <option>/Lusin</option>
-                                            </select>
+                                            </select> -->
                                             </div>
                                         </div>
                                         <br/>
